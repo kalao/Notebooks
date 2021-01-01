@@ -117,7 +117,7 @@ idea插件:
 
 ####   1.2.1.1 对象的内存图
 
-![image-20201121163649217](https://github.com/kalao/Images/tree/master/Java基础.md/20201121163649217.png)
+![image-20201121163649217](https://github.com/kalao/Images/blob/master/Java基础.md/20201121163649217.png)
 
 ## 1.3 属性 
 
@@ -297,7 +297,7 @@ usb接口规范,需要实现打开设备和关闭设备.
 
 鼠标,键盘实现usb接口,电脑类的打开功能的参数设置为接口参数
 
-<img src="https://github.com/kalao/Images/tree/master/Java基础.md/20201207204142611.png" alt="image-20201207204142611" style="zoom:50%;" />
+<img src="https://github.com/kalao/Images/blob/master/Java基础.md/20201207204142611.png" alt="image-20201207204142611" style="zoom:50%;" />
 
 ```
 package 多态;
@@ -816,7 +816,7 @@ String(char[] value) 分配一个新的 `String` ，以便它表示当前包含�
 
 程序中直接写上双引号字符串就放在常量池中,new的不在常量池当中
 
-![image-20201124205144927](https://github.com/kalao/Images/tree/master/Java基础.md/20201124205144927.png)
+![image-20201124205144927](https://github.com/kalao/Images/blob/master/Java基础.md/20201124205144927.png)
 
 ##### equals方法
 
@@ -892,7 +892,7 @@ public static long round(double num)
 
 InputStream 
 
-![image-20201230195403836](https://github.com/kalao/Images/tree/master/Java基础.md/20201230195403836.png)
+![image-20201230195403836](https://github.com/kalao/Images/blob/master/Java基础.md/20201230195403836.png)
 
 # 第四章 集合
 
@@ -970,5 +970,5 @@ java9可以定义私有方法的原因:
 
 
 
-![image-20201205201115354](https://github.com/kalao/Images/tree/master/Java基础.md/20201205201115354.png)
+![image-20201205201115354](https://github.com/kalao/Images/blob/master/Java基础.md/20201205201115354.png)
 

@@ -66,7 +66,7 @@ JVM虚拟机就是二进制字节码的运行环境,负责将字节码转为相�
 - 自动内存管理
 - 自动垃圾回收功能
 
-![image-20201020172511804](https://github.com/kalao/Images/tree/master/JVM基础.md/20201020172511804.png)
+![image-20201020172511804](https://github.com/kalao/Images/blob/master/JVM基础.md/20201020172511804.png)
 
 #### 1.6 JVM的整体结构
 
@@ -74,21 +74,21 @@ JVM虚拟机就是二进制字节码的运行环境,负责将字节码转为相�
 - 它采用解释器和即时编译器并存的架构
 - 在今天,Java程序的运行性能有了很大提升
 
-![image-20201020173338251](https://github.com/kalao/Images/tree/master/JVM基础.md/20201020173338251.png)
+![image-20201020173338251](https://github.com/kalao/Images/blob/master/JVM基础.md/20201020173338251.png)
 
-![image-20201020174251427](https://github.com/kalao/Images/tree/master/JVM基础.md/20201020174251427.png)
+![image-20201020174251427](https://github.com/kalao/Images/blob/master/JVM基础.md/20201020174251427.png)
 
 #### 1.7 JVM的架构模型
 
 Java编译器输入的指令流基本上是一种基于栈的指令集架构,另一种基于寄存器的指令集架构
 
-![image-20201020175319819](https://github.com/kalao/Images/tree/master/JVM基础.md/20201020175319819.png)
+![image-20201020175319819](https://github.com/kalao/Images/blob/master/JVM基础.md/20201020175319819.png)
 
 > Javap -v  test.class 对字节码文件进行反编译,可以 
 >
 > 零地址指令只有操作码，没有操作数。这种指令有两种情况：一是无需操作数，另一种是操作数为默认的（隐含的），默认为操作数在寄存器中，指令可直接访问寄存器。
 
-![image-20201020200806454](https://github.com/kalao/Images/tree/master/JVM基础.md/20201020200806454.png)
+![image-20201020200806454](https://github.com/kalao/Images/blob/master/JVM基础.md/20201020200806454.png)
 
 #### 1.8 JVM的生命周期
 
@@ -108,33 +108,33 @@ Java编译器输入的指令流基本上是一种基于栈的指令集架构,另
 
 #### 1.9 内存结构
 
-![image-20201021191143831](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021191143831.png)
+![image-20201021191143831](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021191143831.png)
 
-![image-20201021191329300](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021191329300.png)
+![image-20201021191329300](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021191329300.png)
 
-![image-20201021191514712](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021191514712.png)
+![image-20201021191514712](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021191514712.png)
 
 #### 2.0 类加载器ClassLoader角色
 
-![image-20201021193518417](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021193518417.png)
+![image-20201021193518417](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021193518417.png)
 
-![image-20201021193850629](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021193850629.png)
+![image-20201021193850629](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021193850629.png)
 
 #### 2.1 类加载过程
 
-![image-20201021193959990](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021193959990.png)
+![image-20201021193959990](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021193959990.png)
 
-![image-20201021194107535](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021194107535.png)
+![image-20201021194107535](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021194107535.png)
 
 加载:
 
-![image-20201021200318904](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021200318904.png)
+![image-20201021200318904](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021200318904.png)
 
-![image-20201021200454604](https://github.com/kalao/Images/tree/master/JVM基础.md/20201021200454604.png)
+![image-20201021200454604](https://github.com/kalao/Images/blob/master/JVM基础.md/20201021200454604.png)
 
  链接:
 
-![image-20201024162148226](https://github.com/kalao/Images/tree/master/JVM基础.md/20201024162148226.png)
+![image-20201024162148226](https://github.com/kalao/Images/blob/master/JVM基础.md/20201024162148226.png)
 
 
 
@@ -189,9 +189,9 @@ public class test {
 
 初始化
 
-![image-20201025105846610](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025105846610.png)
+![image-20201025105846610](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025105846610.png)
 
-![image-20201025105704844](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025105704844.png)
+![image-20201025105704844](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025105704844.png)
 
 
 
@@ -221,13 +221,13 @@ class DeadThread{
 
 类加载器
 
-![image-20201025114515077](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025114515077.png)
+![image-20201025114515077](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025114515077.png)
 
-![image-20201025114929898](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025114929898.png)
+![image-20201025114929898](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025114929898.png)
 
-![image-20201025163547358](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025163547358.png)
+![image-20201025163547358](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025163547358.png)
 
-![image-20201025163627934](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025163627934.png)
+![image-20201025163627934](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025163627934.png)
 
 ```java
 public class classLoader {
@@ -260,7 +260,7 @@ null
 
  
 
-![image-20201025121325578](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025121325578.png)
+![image-20201025121325578](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025121325578.png)
 
 验证bootstraploader的加载的路径
 
@@ -283,9 +283,9 @@ out:
 
 
 
-![image-20201025121959124](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025121959124.png)
+![image-20201025121959124](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025121959124.png)
 
-![image-20201025155949163](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025155949163.png)
+![image-20201025155949163](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025155949163.png)
 
 `
 
@@ -304,11 +304,11 @@ jdk1.8.0_251/jre/lib/ext
 
 
 
-![image-20201025151921841](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025151921841.png)
+![image-20201025151921841](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025151921841.png)
 
-![image-20201025161028734](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025161028734.png)
+![image-20201025161028734](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025161028734.png)
 
-![image-20201025161434681](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025161434681.png)
+![image-20201025161434681](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025161434681.png)
 
 ``
 
@@ -333,9 +333,9 @@ public class CustomClassLoader extends ClassLoader {
 
 ``
 
-![image-20201025164138551](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025164138551.png)
+![image-20201025164138551](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025164138551.png)
 
-![image-20201025165701820](https://github.com/kalao/Images/tree/master/JVM基础.md/20201025165701820.png)
+![image-20201025165701820](https://github.com/kalao/Images/blob/master/JVM基础.md/20201025165701820.png)
 
 ``
 
@@ -348,17 +348,17 @@ System.out.println(c2);//sun.misc.Launcher$AppClassLoader@18b4aac2
 
 #### 2.2 双亲委派机制
 
-![image-20201027201112850](https://github.com/kalao/Images/tree/master/JVM基础.md/20201027201112850.png)
+![image-20201027201112850](https://github.com/kalao/Images/blob/master/JVM基础.md/20201027201112850.png)
 
-![image-20201027202832343](https://github.com/kalao/Images/tree/master/JVM基础.md/20201027202832343.png)
+![image-20201027202832343](https://github.com/kalao/Images/blob/master/JVM基础.md/20201027202832343.png)
 
-![image-20201027203722760](https://github.com/kalao/Images/tree/master/JVM基础.md/20201027203722760.png)
+![image-20201027203722760](https://github.com/kalao/Images/blob/master/JVM基础.md/20201027203722760.png)
 
 这里rt.jar中的接口是引导类加载器加载,而相应的接口实现是由反向委托的线程上下文类加载器来加载
 
-![image-20201027204409869](https://github.com/kalao/Images/tree/master/JVM基础.md/20201027204409869.png)
+![image-20201027204409869](https://github.com/kalao/Images/blob/master/JVM基础.md/20201027204409869.png)
 
-![image-20201027205135198](https://github.com/kalao/Images/tree/master/JVM基础.md/20201027205135198.png)
+![image-20201027205135198](https://github.com/kalao/Images/blob/master/JVM基础.md/20201027205135198.png)
 
 #### 2.3 沙箱安全机制
 
@@ -366,9 +366,9 @@ System.out.println(c2);//sun.misc.Launcher$AppClassLoader@18b4aac2
 
 #### 2.4 其他
 
-![image-20201028091530486](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028091530486.png)
+![image-20201028091530486](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028091530486.png)
 
-![image-20201028092509684](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028092509684.png)
+![image-20201028092509684](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028092509684.png)
 
 # 第二章 运行时数据区的内存结构
 
@@ -382,35 +382,35 @@ System.out.println(c2);//sun.misc.Launcher$AppClassLoader@18b4aac2
 8. 直接内存
 9. 执行引擎
 
-![image-20201028092935843](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028092935843.png)
+![image-20201028092935843](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028092935843.png)
 
 #### 2.1 运行时数据区概述及线程
 
-![image-20201028094026534](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028094026534.png)
+![image-20201028094026534](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028094026534.png)
 
 
 
-![image-20201028094515580](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028094515580.png)
+![image-20201028094515580](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028094515580.png)
 
-![image-20201028093953613](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028093953613.png)
+![image-20201028093953613](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028093953613.png)
 
-![image-20201028095053942](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028095053942.png)
+![image-20201028095053942](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028095053942.png)
 
-![image-20201028095726287](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028095726287.png)
+![image-20201028095726287](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028095726287.png)
 
 
 
-![image-20201028100241514](https://github.com/kalao/Images/tree/master/JVM基础.md/20201028100241514.png)
+![image-20201028100241514](https://github.com/kalao/Images/blob/master/JVM基础.md/20201028100241514.png)
 
 #### 2.2 程序计数器
 
-![image-20201101153342915](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101153342915.png)
+![image-20201101153342915](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101153342915.png)
 
-![image-20201101154118550](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101154118550.png)
+![image-20201101154118550](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101154118550.png)
 
-![image-20201101153851628](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101153851628.png)
+![image-20201101153851628](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101153851628.png)
 
-![image-20201101154240665](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101154240665.png)
+![image-20201101154240665](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101154240665.png)
 
 对于栈和pc,既没有GC也没有OOM
 
@@ -517,7 +517,7 @@ Constant pool:
  这里的0,2,3,5...就是所谓的偏移量.从10到12含有两个小指令,寻找abc常量
 ```
 
-![image-20201101192936383](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101192936383.png)
+![image-20201101192936383](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101192936383.png)
 
 ```
 执行引擎在pc寄存器上获得指令地址,然后去获得相应的操作指令.获得指令后会操作局部变量表,操作数栈.最后解析为机器指令.
@@ -557,15 +557,15 @@ pc寄存器的存储字节码指令的地址是因为由于并发的原因,cpu�
 由于JVM指令是根据栈来设计的,由于需要跨平台,而基于栈是比基于寄存器更容易实现,但是性能会下降,而且由于指令小,需要更多的指令.
 ```
 
-![image-20201101200921355](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101200921355.png)
+![image-20201101200921355](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101200921355.png)
 
 ```
 Java虚拟机栈是每个线程在创建时都会创建一个虚拟机栈,其内部保存一个个栈帧,对应着一次次的JAVA方法的调用.(之前提到PC寄存器也是私有的),因而生命周期也是随着线程的,Java程序的运行需要栈这种存储结构,其主要形式是存储(栈帧)方法的局部变量,部分结果,并参与方法的调用和返回. 
 ```
 
-![image-20201101202214911](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101202214911.png)
+![image-20201101202214911](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101202214911.png)
 
-![image-20201101202431939](https://github.com/kalao/Images/tree/master/JVM基础.md/20201101202431939.png)
+![image-20201101202431939](https://github.com/kalao/Images/blob/master/JVM基础.md/20201101202431939.png)
 
 > 栈中可能出现的异常,JVM规范允许Java的栈的大小是动态的或者固定不变的.
 
@@ -591,15 +591,15 @@ public class StackOverTest {
 
 ##### 2.1.2 栈的存储单位
 
-![image-20201103102328028](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103102328028.png)
+![image-20201103102328028](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103102328028.png)
 
  
 
-![image-20201103102750981](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103102750981.png)
+![image-20201103102750981](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103102750981.png)
 
-  ![image-20201103103220572](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103103220572.png)
+  ![image-20201103103220572](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103103220572.png)
 
-![image-20201103103328152](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103103328152.png)
+![image-20201103103328152](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103103328152.png)
 
 > 不同的线程之间的栈帧是不允许相互引用的,线程只共享同一个进程下的堆空间和方法区域.
 >
@@ -607,35 +607,35 @@ public class StackOverTest {
 >
 > 在Java中,方法的退出有两种方法,第一种方法是正常的退出,第二种方法是未处理的异常的抛出.
 
-![image-20201103182957094](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103182957094.png)
+![image-20201103182957094](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103182957094.png)
 
- ![image-20201103184358800](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103184358800.png)
+ ![image-20201103184358800](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103184358800.png)
 
 ##### 2.1.3 栈帧
 
 ###### 2.1.3.1  局部变量表
 
-![image-20201103184928378](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103184928378.png)
+![image-20201103184928378](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103184928378.png)
 
-![image-20201103192005931](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103192005931.png)
+![image-20201103192005931](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103192005931.png)
 
-![image-20201103192046937](https://github.com/kalao/Images/tree/master/JVM基础.md/20201103192046937.png)
+![image-20201103192046937](https://github.com/kalao/Images/blob/master/JVM基础.md/20201103192046937.png)
 
-![image-20201104141551326](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104141551326.png)
+![image-20201104141551326](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104141551326.png)
 
 LineNumberTable:代码行号与相对偏移的行号
 
-![image-20201104144856825](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104144856825.png)
+![image-20201104144856825](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104144856825.png)
 
 局部变量表中的StartPC和Length共同构成这个变量的作用域
 
-![image-20201104145223082](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104145223082.png)
+![image-20201104145223082](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104145223082.png)
 
-![image-20201104150110283](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104150110283.png)
+![image-20201104150110283](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104150110283.png)
 
-![image-20201104150602744](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104150602744.png)
+![image-20201104150602744](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104150602744.png)
 
-![image-20201104151301154](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104151301154.png)
+![image-20201104151301154](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104151301154.png)
 
 ```java
 public void fun(){
@@ -649,7 +649,7 @@ public void fun(){
 }
 ```
 
-![image-20201104151902653](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104151902653.png)
+![image-20201104151902653](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104151902653.png)
 
 
 
@@ -668,35 +668,35 @@ public void fun(){
 - 局部变量
   - **在使用前必须显式赋值.**
 
-![image-20201104152723203](https://github.com/kalao/Images/tree/master/JVM基础.md/20201104152723203.png)
+![image-20201104152723203](https://github.com/kalao/Images/blob/master/JVM基础.md/20201104152723203.png)
 
 ###### 2.1.3.2   操作数栈
 
-![image-20201107195348752](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107195348752.png)
+![image-20201107195348752](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107195348752.png)
 
-![image-20201107195538311](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107195538311.png)
+![image-20201107195538311](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107195538311.png)
 
-![image-20201107195810591](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107195810591.png)
+![image-20201107195810591](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107195810591.png)
 
 ```
 字节码指令需要变成机器指令,然后操作操作数栈.
 ```
 
-![image-20201107200519034](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107200519034.png)
+![image-20201107200519034](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107200519034.png)
 
 
 
-![image-20201107201631607](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107201631607.png)
+![image-20201107201631607](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107201631607.png)
 
 
 
-![image-20201107201717028](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107201717028.png)
+![image-20201107201717028](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107201717028.png)
 
 
 
-![image-20201107201922558](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107201922558.png)
+![image-20201107201922558](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107201922558.png)
 
-![image-20201107202000712](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107202000712.png)
+![image-20201107202000712](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107202000712.png)
 
 
 
@@ -715,17 +715,17 @@ iload_index 将索引为index的数据从局部变量表到操作数栈
 
 
 
-![image-20201107202358452](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107202358452.png)
+![image-20201107202358452](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107202358452.png)
 
-![image-20201107202431254](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107202431254.png)
+![image-20201107202431254](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107202431254.png)
 
 ```
 在数据push到操作数栈的时候,对于上图的m,当其在byte范围,它指令为bipush,之后将byte转换为int,当其在short范围(800),之后将其转为int,如果超过int,那么在编译的时候,就会报错.
 ```
 
-![image-20201107203319436](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107203319436.png)
+![image-20201107203319436](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107203319436.png)
 
-![image-20201107203336597](https://github.com/kalao/Images/tree/master/JVM基础.md/20201107203336597.png)
+![image-20201107203336597](https://github.com/kalao/Images/blob/master/JVM基础.md/20201107203336597.png)
 
 ```
 aload0:加载this
@@ -734,13 +734,13 @@ invokevirtual 调用实例方法   ???没有解释
 
 ######  2.1.3.3 栈顶缓存技术
 
-![image-20201109091400002](https://github.com/kalao/Images/tree/master/JVM基础.md/20201109091400002.png)
+![image-20201109091400002](https://github.com/kalao/Images/blob/master/JVM基础.md/20201109091400002.png)
 
 
 
 ###### 2.1.3.4  动态链接 
 
-![image-20201109091832174](https://github.com/kalao/Images/tree/master/JVM基础.md/20201109091832174.png)
+![image-20201109091832174](https://github.com/kalao/Images/blob/master/JVM基础.md/20201109091832174.png)
 
 ```
 #13 ()V 空参数
@@ -749,7 +749,7 @@ invokevirtual 调用实例方法   ???没有解释
 
 ```
 
-![image-20201110204632427](https://github.com/kalao/Images/tree/master/JVM基础.md/20201110204632427.png)  
+![image-20201110204632427](https://github.com/kalao/Images/blob/master/JVM基础.md/20201110204632427.png)  
 
  
 
@@ -760,25 +760,25 @@ invokevirtual 调用实例方法   ???没有解释
 
 ###### 2.1.3.5 绑定方式
 
-![image-20201111133910610](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111133910610.png)
+![image-20201111133910610](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111133910610.png)
 
 ```
 动态还是静态在于在编译期是否确定.
 ```
 
-![image-20201111134203351](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111134203351.png)
+![image-20201111134203351](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111134203351.png)
 
-![image-20201111142619874](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111142619874.png)
+![image-20201111142619874](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111142619874.png)
 
-![image-20201111143054078](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111143054078.png)
+![image-20201111143054078](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111143054078.png)
 
-![image-20201111143002537](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111143002537.png)
+![image-20201111143002537](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111143002537.png)
 
 ![image-20201111142747894](/home/kalao/.config/Typora/typora-user-images/image-20201111142747894.png  )
 
 ###### 2.1.3.6  虚方法和非虚方法
 
-![image-20201111143400883](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111143400883.png) 
+![image-20201111143400883](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111143400883.png) 
 
 
 
@@ -789,59 +789,59 @@ invokevirtual 调用实例方法   ???没有解释
 
 
 
-![image-20201111145547794](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111145547794.png)
+![image-20201111145547794](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111145547794.png)
 
-![image-20201111151652086](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111151652086.png)
+![image-20201111151652086](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111151652086.png)
 
-![image-20201111151730545](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111151730545.png)
+![image-20201111151730545](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111151730545.png)
 
  
 
 ###### 2.1.3.7 动态类型语言和静态类型语言
 
-![image-20201111152431053](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111152431053.png)
+![image-20201111152431053](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111152431053.png)
 
-![image-20201111154545266](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111154545266.png)
+![image-20201111154545266](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111154545266.png)
 
-![image-20201111154639839](https://github.com/kalao/Images/tree/master/JVM基础.md/20201111154639839.png)
+![image-20201111154639839](https://github.com/kalao/Images/blob/master/JVM基础.md/20201111154639839.png)
 
 ###### 2.1.3.8 方法重写 的本质
 
-![image-20201114112912110](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114112912110.png)
+![image-20201114112912110](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114112912110.png)
 
 ```
 当调用一个属性或者方法的时候,通过不断的往父类查找,查不到就是抽象方法或者接口,但是如果是抽象方法,那么本身就是抽像类,所以只能是接口. 
 ```
 
-![image-20201114182707703](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114182707703.png)
+![image-20201114182707703](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114182707703.png)
 
 
 
-![image-20201114183709018](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114183709018.png)
+![image-20201114183709018](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114183709018.png)
 
 
 
 
 
-![image-20201114184021301](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114184021301.png)
+![image-20201114184021301](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114184021301.png)
 
-![image-20201114184412739](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114184412739.png)
+![image-20201114184412739](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114184412739.png)
 
 ###### 2.1.3.9 方法返回地址
 
-![image-20201114190325180](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114190325180.png)
+![image-20201114190325180](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114190325180.png)
 
-![image-20201114203708787](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114203708787.png)
+![image-20201114203708787](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114203708787.png)
 
-![image-20201114204117508](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114204117508.png)
+![image-20201114204117508](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114204117508.png)
 
 
 
-![image-20201114204505131](https://github.com/kalao/Images/tree/master/JVM基础.md/20201114204505131.png)
+![image-20201114204505131](https://github.com/kalao/Images/blob/master/JVM基础.md/20201114204505131.png)
 
 ######  2.1.3.10 面试题
 
-![image-20201115153824263](https://github.com/kalao/Images/tree/master/JVM基础.md/20201115153824263.png)
+![image-20201115153824263](https://github.com/kalao/Images/blob/master/JVM基础.md/20201115153824263.png)
 
 ```
 局部变量s1是否是线程安全的?
@@ -856,17 +856,17 @@ invokevirtual 调用实例方法   ???没有解释
 
 ##### 2.4.1 本地方法
 
-![image-20201115160420905](https://github.com/kalao/Images/tree/master/JVM基础.md/20201115160420905.png)
+![image-20201115160420905](https://github.com/kalao/Images/blob/master/JVM基础.md/20201115160420905.png)
 
-![image-20201115155326700](https://github.com/kalao/Images/tree/master/JVM基础.md/20201115155326700.png)
+![image-20201115155326700](https://github.com/kalao/Images/blob/master/JVM基础.md/20201115155326700.png)
 
-![image-20201115155531354](https://github.com/kalao/Images/tree/master/JVM基础.md/20201115155531354.png)
+![image-20201115155531354](https://github.com/kalao/Images/blob/master/JVM基础.md/20201115155531354.png)
 
-![image-20201115160350642](https://github.com/kalao/Images/tree/master/JVM基础.md/20201115160350642.png)
+![image-20201115160350642](https://github.com/kalao/Images/blob/master/JVM基础.md/20201115160350642.png)
 
 ##### 2.4.2 本地方法栈
 
-![image-20201115161000220](https://github.com/kalao/Images/tree/master/JVM基础.md/20201115161000220.png)
+![image-20201115161000220](https://github.com/kalao/Images/blob/master/JVM基础.md/20201115161000220.png)
 
 
 
