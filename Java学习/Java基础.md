@@ -804,6 +804,7 @@ public Outer{
 
    ```
    int j=i;
+   //int j=i.intValue();
    ```
 
 3. .toString()转换为字符串
