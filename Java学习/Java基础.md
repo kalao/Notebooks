@@ -826,9 +826,9 @@ Q:如下示例,下面情况的原因
 
 A:Integer的valueOf将[-128,127]的Integer进行缓存
 
-<img src="/home/kalao/.config/Typora/typora-user-images/image-20210102205805287.png" alt="image-20210102205805287" style="zoom:80%;" />
+<img src="https://github.com/kalao/Images/blob/master/Java基础.md/20210102205805287.png" alt="image-20210102205805287" style="zoom:80%;" />
 
-<img src="/home/kalao/.config/Typora/typora-user-images/image-20210102205145815.png" alt="image-20210102205145815" style="zoom:80%;" />
+<img src="https://github.com/kalao/Images/blob/master/Java基础.md/20210102205145815.png" alt="image-20210102205145815" style="zoom:80%;" />
 
 
 
@@ -921,7 +921,7 @@ A:a在进行优化后就是同一对象,而e编译器不知道具体的值.
 
 String的char[]是final的,而StringBuilder不是final的
 
-<img src="/home/kalao/.config/Typora/typora-user-images/image-20210102211340023.png" alt="image-20210102211340023" style="zoom:80%;" />
+<img src="https://github.com/kalao/Images/blob/master/Java基础.md/20210102211340023.png" alt="image-20210102211340023" style="zoom:80%;" />
 
 ```
         StringBuilder a=new StringBuilder("abcd");
@@ -952,7 +952,7 @@ String的char[]是final的,而StringBuilder不是final的
 
 #### Date类(时间类)
 
-![image-20210102213521101](/home/kalao/.config/Typora/typora-user-images/image-20210102213521101.png)
+![image-20210102213521101](https://github.com/kalao/Images/blob/master/Java基础.md/20210102213521101.png)
 
 自1970年1月1日 开始,以此时间点为0,往后为正,往前为负.可以通过
 
@@ -1006,7 +1006,7 @@ gregorianCalendar.setTime(时间对象);
 
 > DateFormat用于将字符串和时间类相互转换
 
-![image-20210102220137476](/home/kalao/.config/Typora/typora-user-images/image-20210102220137476.png)
+![image-20210102220137476](https://github.com/kalao/Images/blob/master/Java基础.md/20210102220137476.png)
 
 示例: 将时间对象按照指定格式输出为字符串
 
