@@ -790,8 +790,19 @@ public Outer{
 ### 1.0.1 Integer
 
 1. Integer.valueOf(10)将基本数据类型转换为包装类
-2.  .intValue()将包装类转换成基本数据类型
+
+   自动装箱
+
+   ```
+   Integer i=Integer.valueOf(100);
+   ```
+
+   
+
+2. .intValue()将包装类转换成基本数据类型
+
 3. .toString()转换为字符串
+
 4. 常见的常量 MAX_VALUE ;MIN_VALUE
 
 ## 1.1 Scanner /Radnom
