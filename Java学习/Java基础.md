@@ -791,15 +791,20 @@ public Outer{
 
 1. Integer.valueOf(10)将基本数据类型转换为包装类
 
+2. intValue()将包装类转换成基本数据类型
+
    自动装箱
 
    ```
-   Integer i=Integer.valueOf(100);
+   Integer i=100;
+   //相当于 Integer i=Integer.valueOf(100);
    ```
 
-   
+   自动拆箱
 
-2. .intValue()将包装类转换成基本数据类型
+   ```
+   int j=i;
+   ```
 
 3. .toString()转换为字符串
 
