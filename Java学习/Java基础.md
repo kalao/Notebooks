@@ -2,6 +2,8 @@
 
 
 
+
+
 # **第一章** 入门
 
 ## 1.1  java的一些重要版本
@@ -811,6 +813,29 @@ public Outer{
 
 4. 常见的常量 MAX_VALUE ;MIN_VALUE
 
+Q:如下示例,下面情况的原因
+
+```
+        Integer i_1=Integer.valueOf(-128);
+        Integer j_1=Integer.valueOf(-128);
+        System.out.println(i_1==j_1);
+        Integer i_2=Integer.valueOf(128);
+        Integer j_2=Integer.valueOf(128);
+        System.out.println(i_2==j_2);
+```
+
+A:Integer的valueOf将[-128,127]的Integer进行缓存
+
+<img src="/home/kalao/.config/Typora/typora-user-images/image-20210102205805287.png" alt="image-20210102205805287" style="zoom:80%;" />
+
+<img src="/home/kalao/.config/Typora/typora-user-images/image-20210102205145815.png" alt="image-20210102205145815" style="zoom:80%;" />
+
+
+
+
+
+
+
 ## 1.1 Scanner /Radnom
 
 ## 1.2 ArrayList
@@ -873,19 +898,146 @@ public String replace(CharSequence old,Charsequence new)
 public String[] split(String regex)//参数是正则表达式
 ```
 
-### 1.4 Date 类 , LocalDate 类 
-
-一个是用来表示时间点的 Date 类 ; 另一个是用来表示大家熟悉的日历表示法的 LocalDate 类 。
+Q:由于编译器优化导致的比较结果差异
 
 ```
-LocalDate常用用法:
-	LocateDate.now()
-	可以提供年 、 月和日来构造对应一个特定日期的对象 :
-	LocalDate . of (1999, 12 , 31)
-	一旦有 了一个 LocalDate 对象 , 可以用方法 get Year 、getMonth Value 和 getDayOfMonth得到年、月和日 :
+String a="hello"+"world";
+String b="helloworld";
+System.out.println(a==b);
+String c="hello";
+String d="world";
+String e=c+d;
+System.out.println(a==e);
 ```
 
-1.5 Arrays 数组工具类
+```
+true
+false
+```
+
+A:a在进行优化后就是同一对象,而e编译器不知道具体的值.
+
+### 1.4 可变StringBuilder和StringBuffer
+
+String的char[]是final的,而StringBuilder不是final的
+
+<img src="/home/kalao/.config/Typora/typora-user-images/image-20210102211340023.png" alt="image-20210102211340023" style="zoom:80%;" />
+
+```
+        StringBuilder a=new StringBuilder("abcd");
+        System.out.println(a.hashCode());
+        a=a.append("ss");
+        System.out.println(a.hashCode());
+        String b="dff";
+        System.out.println(b.hashCode());
+        b=b+"ss";
+        System.out.println(b.hashCode());
+```
+
+```
+1528902577
+1528902577
+99364
+95492484
+```
+
+常用方法:
+
+1. obj.reverse 倒序
+2. obj.setCharAt(index,value)修改
+3. obj.insert(index,value)插入
+4. obj.delete(start,end)删除
+
+### 1.5 时间类 
+
+#### Date类(时间类)
+
+![image-20210102213521101](/home/kalao/.config/Typora/typora-user-images/image-20210102213521101.png)
+
+自1970年1月1日 开始,以此时间点为0,往后为正,往前为负.可以通过
+
+```
+        System.currentTimeMillis()
+```
+
+以此为核心的Date类:
+
+```
+Date x=new Date(时间戳)
+```
+
+obj.getTime()可获得毫秒数
+
+#### Calender类(日期类)
+
+> ```
+> GregorianCalendar是Calender的实现类
+> ```
+
+创建对象:
+
+```
+Calendar gregorianCalendar = new GregorianCalendar(2020, 10, 1);
+```
+
+获取相关的信息:
+
+```
+gregorianCalendar.get(Calendar.YEAR)
+```
+
+设置相关信息:
+
+```
+gregorianCalendar.add(Calendar.YEAR,1);
+```
+
+日期和时间类的相互转化
+
+```
+gregorianCalendar.setTime(时间对象);
+```
+
+注意:
+
+月份是从0开始的
+
+#### DateFormat和SimpleDateFormat
+
+> DateFormat用于将字符串和时间类相互转换
+
+![image-20210102220137476](/home/kalao/.config/Typora/typora-user-images/image-20210102220137476.png)
+
+示例: 将时间对象按照指定格式输出为字符串
+
+```
+        DateFormat yy = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = yy.format(new Date(System.currentTimeMillis()));
+        System.out.println(format);
+```
+
+示例:
+
+```
+        try {
+            DateFormat yy = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date parse = yy.parse("2020-12-01 00:00:00");     
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+```
+
+
+
+
+
+
+
+
+
+
+
+1.6 Arrays 数组工具类
 
 ```
 public static String toString(数组)将参数数组变成字符串,{元素1,元素2}
@@ -895,7 +1047,7 @@ public static void sort(数组)按照默认升序对数组的元素进行排序
 
 
 
-### 1.6 Math类
+### 1.7 Math类
 
 ```
 public static double abs(double num)
@@ -905,7 +1057,7 @@ public static long round(double num)
 
 ```
 
-## 1.7 流
+## 1.8 流
 
 InputStream 
 
