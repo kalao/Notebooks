@@ -1027,17 +1027,47 @@ gregorianCalendar.setTime(时间对象);
         }
 ```
 
+示例:**
+
+```
+完成一个简单日历
+System.out.println(firstDayOfMonth.getActualMaximum(Calendar.DATE));
+System.out.println(firstDayOfMonth.get(Calendar.DAY_OF_WEEK));
+```
+
+### 1.6 File类
+
+常用方法:
+
+1. File是否存在
+2. File是否是目录
+3. ~是否是文件
+4. ~最后修改时间
+5. ~大小
+6. ~文件名
+7. 目录路径
+8. 创建文件/文件夹
+
+示例:
+
+```
+递归遍历文件夹
+```
+
+### 1.7 枚举
+
+>  将一些字串定义为有意义的常量
+>
+
+```
+enum x{
+    MONDAY,
+}
+```
 
 
 
-
-
-
-
-
-
-
-1.6 Arrays 数组工具类
+### 1.8Arrays 数组工具类
 
 ```
 public static String toString(数组)将参数数组变成字符串,{元素1,元素2}
@@ -1047,7 +1077,7 @@ public static void sort(数组)按照默认升序对数组的元素进行排序
 
 
 
-### 1.7 Math类
+### 1.9 Math类
 
 ```
 public static double abs(double num)
@@ -1057,7 +1087,7 @@ public static long round(double num)
 
 ```
 
-## 1.8 流
+## 2.0 流
 
 InputStream 
 
