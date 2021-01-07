@@ -1087,11 +1087,37 @@ public static long round(double num)
 
 ```
 
-## 2.0 流
+### 2.0 容器
 
-InputStream 
+![image-20210107111436766](https://github.com/kalao/Images/blob/master/Java基础.md/20210107111436766.png)
 
-![image-20201230195403836](https://github.com/kalao/Images/blob/master/Java基础.md/20201230195403836.png)
+> Collection接口
+
+![image-20210107111831540](https://github.com/kalao/Images/blob/master/Java基础.md/20210107111831540.png)
+
+![image-20210107114254586](https://github.com/kalao/Images/blob/master/Java基础.md/20210107114254586.png)
+
+
+
+List
+
+> List是有序,可重复(允许e1.equals(e2))的容器
+
+ArrayList
+
+> 底层是数组实现的,查询效率高,增删效率低,线程不安全
+
+> 数组的长度有限,但是ArrayList长度是可变的
+
+- 为什么ArrayList长度可变?怎么实现的?
+
+```
+主要是使用拷贝的方法,当容量不够,拷贝到一个新的数组中去.
+```
+
+示例:手动实现ArrayList
+
+
 
 # 第四章 集合
 
@@ -1219,4 +1245,12 @@ Tip:
 > 3 不要进行小粒度的异常处理,应该将整个任务包装在一个try语句块中.
 
 ![image-20210106195049469](https://github.com/kalao/Images/blob/master/Java基础.md/20210106195049469.png)
+
+# 第七章 泛型
+
+> 泛型的本质就是"数据类型的参数化",可以将泛型理解为数据类型的一个占位符,即告诉编译器,在调用泛型时必须传入实际类型.
+>
+> ##### 另外泛型保证了容器的数据一致性
+
+
 
