@@ -23,7 +23,7 @@
 1. 自定义配置(同时备份到多个地方(Github,GitEE,自己的网站))
 2. 做成UI程序
 
-
+/home/kalao/Documents/swapToUUi/文档/项目仓库/NoteBookGit/Java学习/坑 (3rd copy).md
 
 本地缓存
 
