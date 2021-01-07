@@ -1175,17 +1175,17 @@ java9可以定义私有方法的原因:
 
 
 
-![image-20210106143858084](/home/kalao/.config/Typora/typora-user-images/image-20210106143858084.png)
+![image-20210106143858084](https://github.com/kalao/Images/blob/master/Java基础.md/20210106143858084.png)
 
-![image-20210106143936930](/home/kalao/.config/Typora/typora-user-images/image-20210106143936930.png)
+![image-20210106143936930](https://github.com/kalao/Images/blob/master/Java基础.md/20210106143936930.png)
 
 - 逻辑代码和错误代码放在一起
 
 - 程序员本身需要考虑的例外情况较为复杂,对程序员要求较高!
 
-  ![image-20210106144257596](/home/kalao/.config/Typora/typora-user-images/image-20210106144257596.png)
+  ![image-20210106144257596](https://github.com/kalao/Images/blob/master/Java基础.md/20210106144257596.png)
 
-![image-20210106145040082](/home/kalao/.config/Typora/typora-user-images/image-20210106145040082.png)
+![image-20210106145040082](https://github.com/kalao/Images/blob/master/Java基础.md/20210106145040082.png)
 
 派生于RuntimeException的异常,如被0除,数组下标越界,强制类型转换,空指针,其产生比较频繁,处理麻烦,<u>如果显式的声明或捕获将会对程序可读性和运行效率影响很大,因此由系统自动检测并将它们交给缺省的异常处理程序.</u>(不是很懂)
 
@@ -1208,7 +1208,7 @@ if(a instanceof 类){
 
 try...catch 异常一般子类在前,父类在后
 
-![image-20210106193558236](/home/kalao/.config/Typora/typora-user-images/image-20210106193558236.png)
+![image-20210106193558236](https://github.com/kalao/Images/blob/master/Java基础.md/20210106193558236.png)
 
 Tip:
 
@@ -1218,4 +1218,4 @@ Tip:
 >
 > 3 不要进行小粒度的异常处理,应该将整个任务包装在一个try语句块中.
 
-![image-20210106195049469](/home/kalao/.config/Typora/typora-user-images/image-20210106195049469.png)
+![image-20210106195049469](https://github.com/kalao/Images/blob/master/Java基础.md/20210106195049469.png)
