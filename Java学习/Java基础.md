@@ -1252,5 +1252,6 @@ Tip:
 >
 > ##### 另外泛型保证了容器的数据一致性
 
+11223
 
-
+![image-20210107231950900](https://github.com/kalao/Images/blob/master/Java基础.md/20210107231950900.png)
