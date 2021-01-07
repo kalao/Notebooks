@@ -1006,7 +1006,7 @@ gregorianCalendar.setTime(时间对象);
 
 > DateFormat用于将字符串和时间类相互转换
 
-![image-20210102220137476](https://github.com/kalao/Images/blob/master/Java基础.md/20210102220137476.png)
+![image-20210102220137476](https://github.com/kalao/Images/blog/master/Java基础.md/20210102220137476.png)
 
 示例: 将时间对象按照指定格式输出为字符串
 
