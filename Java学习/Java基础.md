@@ -1168,6 +1168,10 @@ public static long round(double num)
 
 ![image-20210108181048895](https://github.com/kalao/Images/blob/master/Java基础.md/20210108181048895.png)
 
+
+
+手动实现一个HashMap
+
 # 第四章 集合
 
 ##  1.1 自动装箱,自动拆箱
