@@ -1099,11 +1099,11 @@ public static long round(double num)
 
 
 
-List
+#### List
 
 > List是有序,可重复(允许e1.equals(e2))的容器
 
-ArrayList
+#### ArrayList
 
 > 底层是数组实现的,查询效率高,增删效率低,线程不安全
 
@@ -1117,7 +1117,56 @@ ArrayList
 
 示例:手动实现ArrayList
 
+示例:手动实现LinkedList
 
+#### vector
+
+> vector是线程安全的,相关方法都加了同步检查,因此效率低
+
+
+
+
+
+#### Map接口
+
+常用方法
+
+1. put(键不能重复,如果有重复,那么会覆盖)
+2. get
+
+#### HashMap
+
+> 底层是哈希表
+
+![image-20210108175320130](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175320130.png)
+
+![image-20210108175401723](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175401723.png)
+
+![image-20210108175243405](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175243405.png)
+
+具体实现:数组+列表
+
+![image-20210108175507242](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175507242.png)
+
+
+
+![image-20210108175734352](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175734352.png)
+
+![image-20210108180157274](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180157274.png)
+
+
+
+![image-20210108180401917](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180401917.png)
+
+![image-20210108180559139](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180559139.png)
+
+
+
+![image-20210108180614012](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180614012.png)
+
+![image-20210108181028577](https://github.com/kalao/Images/blob/master/Java基础.md/20210108181028577.png)
+
+![image-20210108181048895](https://github.com/kalao/Images/blob/master/Java基础.md/20210108181048895.png)
 
 # 第四章 集合
 
@@ -1252,8 +1301,3 @@ Tip:
 >
 > ##### 另外泛型保证了容器的数据一致性
 
-11223
-
-![image-20210107231950900](https://github.com/kalao/Images/blob/master/Java基础.md/20210107231950900.png)
-
-![image-20210107231950900](https://github.com/kalao/Images/blob/master/Java基础.md/20210107231950900.png)
