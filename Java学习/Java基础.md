@@ -1172,6 +1172,10 @@ public static long round(double num)
 
 手动实现一个HashMap
 
+#### TreeMap
+
+![image-20210108210247885](https://github.com/kalao/Images/blob/master/Java基础.md/20210108210247885.png)
+
 # 第四章 集合
 
 ##  1.1 自动装箱,自动拆箱
