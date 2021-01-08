@@ -1176,6 +1176,16 @@ public static long round(double num)
 
 ![image-20210108210247885](https://github.com/kalao/Images/blob/master/Java基础.md/20210108210247885.png)
 
+示例:实现一个自定义类的TreeMap,类需要实现CompareTo
+
+#### HashSet
+
+> 没有顺序,不可重复
+
+
+
+
+
 # 第四章 集合
 
 ##  1.1 自动装箱,自动拆箱
