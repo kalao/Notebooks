@@ -203,4 +203,4 @@ public void addUserTest(){
 
 涉及maven的东西
 
-![image-20210110163749664](/home/kalao/.config/Typora/typora-user-images/image-20210110163749664.png)
+![image-20210110163749664](https://github.com/kalao/Images/blob/master/spring基础.md/20210110163749664.png)
