@@ -1138,43 +1138,43 @@ public static long round(double num)
 
 > 底层是哈希表
 
-![image-20210108175320130](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175320130.png)
+![image-20210108175320130](/home/kalao/.config/Typora/typora-user-images/image-20210108175320130.png)
 
-![image-20210108175401723](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175401723.png)
+![image-20210108175401723](/home/kalao/.config/Typora/typora-user-images/image-20210108175401723.png)
 
-![image-20210108175243405](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175243405.png)
+![image-20210108175243405](/home/kalao/.config/Typora/typora-user-images/image-20210108175243405.png)
 
 具体实现:数组+列表
 
-![image-20210108175507242](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175507242.png)
+![image-20210108175507242](/home/kalao/.config/Typora/typora-user-images/image-20210108175507242.png)
 
 
 
-![image-20210108175734352](https://github.com/kalao/Images/blob/master/Java基础.md/20210108175734352.png)
+![image-20210108175734352](/home/kalao/.config/Typora/typora-user-images/image-20210108175734352.png)
 
-![image-20210108180157274](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180157274.png)
-
-
-
-![image-20210108180401917](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180401917.png)
-
-![image-20210108180559139](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180559139.png)
+![image-20210108180157274](/home/kalao/.config/Typora/typora-user-images/image-20210108180157274.png)
 
 
 
-![image-20210108180614012](https://github.com/kalao/Images/blob/master/Java基础.md/20210108180614012.png)
+![image-20210108180401917](/home/kalao/.config/Typora/typora-user-images/image-20210108180401917.png)
 
-![image-20210108181028577](https://github.com/kalao/Images/blob/master/Java基础.md/20210108181028577.png)
-
-![image-20210108181048895](https://github.com/kalao/Images/blob/master/Java基础.md/20210108181048895.png)
+![image-20210108180559139](/home/kalao/.config/Typora/typora-user-images/image-20210108180559139.png)
 
 
 
-手动实现一个HashMap
+![image-20210108180614012](/home/kalao/.config/Typora/typora-user-images/image-20210108180614012.png)
+
+![image-20210108181028577](/home/kalao/.config/Typora/typora-user-images/image-20210108181028577.png)
+
+![image-20210108181048895](/home/kalao/.config/Typora/typora-user-images/image-20210108181048895.png)
+
+
+
+示例:手动实现一个HashMap
 
 #### TreeMap
 
-![image-20210108210247885](https://github.com/kalao/Images/blob/master/Java基础.md/20210108210247885.png)
+![image-20210108210247885](/home/kalao/.config/Typora/typora-user-images/image-20210108210247885.png)
 
 示例:实现一个自定义类的TreeMap,类需要实现CompareTo
 
@@ -1184,7 +1184,49 @@ public static long round(double num)
 
 
 
+#### Interator
 
+> 使用Iterator迭代遍历容器元素
+
+iterator_obj.next()返回当前内容,并指向下一个.
+
+示例:遍历Map
+
+1. 通过entrySet
+
+```
+Map<String,Integer> slinks=new HashMap<>();
+slinks.put("1",1);
+slinks.put("2",2);
+slinks.put("3",3);
+Set<Entry<String,Integer>> set=slinks.entrySet();
+for(Iterator<Entry<String,Integer>> it = set.iterator(); it.hasNext();){
+    Entry<String,Integer> item=it.next();
+    System.out.println(item.getKey());
+}
+output:
+1
+2
+3
+```
+
+   2. 通过keySet
+
+      略
+
+![image-20210109200222380](/home/kalao/.config/Typora/typora-user-images/image-20210109200222380.png)
+
+![image-20210109200400980](/home/kalao/.config/Typora/typora-user-images/image-20210109200400980.png)
+
+#### Collections工具类
+
+![image-20210109200844424](/home/kalao/.config/Typora/typora-user-images/image-20210109200844424.png)
+
+
+
+#### 表格数据如何存储?
+
+每行用一个Map, 用List存储每行,那么这里每行其实可用对象存储
 
 # 第四章 集合
 
