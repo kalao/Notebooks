@@ -154,9 +154,7 @@ public class mybatisUtils {
 
 #### 3.4、通过sqlsession获得mapper执行SQL(获得实现Mapper接口的对象,内部使用反射机制实现,从而调用相应方法)
 
-
-
-查询测试
+##### 查询测试
 
 ```java
     @Test
@@ -174,7 +172,7 @@ public class mybatisUtils {
     }
 ```
 
-插入测试
+##### 插入测试
 
 ```java
 public interface userMapper {
@@ -207,7 +205,7 @@ public void addUserTest(){
 
 1. 我们可以用map来代替实体类作为参数 
 
-模糊查询
+##### 模糊查询
 
 ```java
 select * from user where name like "%李%"
@@ -216,11 +214,11 @@ select * from user where name like "%李%"
     select * from user where name like "%"#{parm}"%"
 ```
 
-#### 配置
+### 四、配置
 
 ![image-20210110233937975](https://github.com/kalao/Images/blob/master/spring基础.md/20210110233937975.png)
 
-可以将数据库的配置用db.properties 来导入到mybatis中
+1. 可以将数据库的配置用db.properties 来导入到mybatis中
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -247,8 +245,8 @@ select * from user where name like "%李%"
 </configuration>
 ```
 
+### 五、可能遇到的问题
 
-
-涉及maven的东西
+1. 在java文件夹下的xml文件无法find,需要对java里的文件进行过滤,将其作为resources的一部分来源.
 
 ![image-20210110163749664](https://github.com/kalao/Images/blob/master/spring基础.md/20210110163749664.png)
