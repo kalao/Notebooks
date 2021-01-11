@@ -1,12 +1,12 @@
 # Mybatis
 
-简单的一个mybatis项目
+## 简单的一个mybatis项目
 
 
 
 
 
-#### 导入maven依赖
+### 一、导入maven依赖
 
 ```xml
         <dependency>
@@ -26,7 +26,7 @@
         </dependency>
 ```
 
-#### mybatis的核心配置文件
+### 二、mybatis的核心配置文件
 
 包括数据源datasource和事物管理,以及注册定义的Mapper.xml
 
@@ -55,7 +55,13 @@
 </configuration>
 ```
 
-##### 一,定义实体类
+
+
+### 三、mybatis使用的基本流程
+
+
+
+#### 3.1、定义实体类
 
 ```java
 package com.mybatis01.pojo;
@@ -98,7 +104,7 @@ public class user {
 }
 ```
 
-##### 二,定义mapper接口+mapper配置文件/注解(sql模板)
+#### 3.2 、定义mapper接口+mapper配置文件/注解(sql模板)
 
 ```java
 public interface userMapper {
@@ -120,7 +126,7 @@ public interface userMapper {
 
 namespace="***" 是用于绑定userMapper),定义的sql语句配置其实就是用于实现接口.
 
-##### 三,mybatis工具类用于产生sqlSession对象
+#### 3.3、mybatis工具类用于产生sqlSession对象
 
 ```java
 public class mybatisUtils {
@@ -146,7 +152,7 @@ public class mybatisUtils {
 
 
 
-##### 四, 执行SQL(获得实现Mapper接口的对象,内部使用反射机制实现,从而调用相应方法)
+#### 3.4、通过sqlsession获得mapper执行SQL(获得实现Mapper接口的对象,内部使用反射机制实现,从而调用相应方法)
 
 
 
@@ -197,7 +203,49 @@ public void addUserTest(){
 
 > 注意增删改是需要commit的
 
+注意:
 
+1. 我们可以用map来代替实体类作为参数 
+
+模糊查询
+
+```java
+select * from user where name like "%李%"
+1 传入 "%李%"
+2 写死
+    select * from user where name like "%"#{parm}"%"
+```
+
+#### 配置
+
+![image-20210110233937975](https://github.com/kalao/Images/blob/master/spring基础.md/20210110233937975.png)
+
+可以将数据库的配置用db.properties 来导入到mybatis中
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--   引入db.properties -->
+    <properties resource="db.properties"></properties>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/mybatis01/dao/userMapper.xml"/>
+    </mappers>
+</configuration>
+```
 
 
 
