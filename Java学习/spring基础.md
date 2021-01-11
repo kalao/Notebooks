@@ -216,7 +216,12 @@ select * from user where name like "%李%"
 
 ### 四、配置
 
-![image-20210110233937975](https://github.com/kalao/Images/blob/master/spring基础.md/20210110233937975.png)
+1. mybatis可以配置成适用多种环境(mysql,oracle)
+2. mybatis的事物管理是JDBC,连接池是POOLED
+
+MORE DETAILS:https://mybatis.org/mybatis-3/zh/configuration.html#environments
+
+
 
 1. 可以将数据库的配置用db.properties 来导入到mybatis中
 
