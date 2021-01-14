@@ -4,6 +4,8 @@
 
 
 
+
+
 # Mybatis
 
 ## 简单的一个mybatis项目
@@ -1009,6 +1011,12 @@ comment(id=3, content=up, blog=blog(id=1, title=starting))
 
 
 
+![image-20210112220220434](/home/kalao/.config/Typora/typora-user-images/image-20210112220220434.png)
+
+![image-20210112223820984](/home/kalao/.config/Typora/typora-user-images/image-20210112223820984.png)
+
+
+
 # 日志
 
 ## 一、log4j
@@ -1077,3 +1085,149 @@ log4j.logger.java.sql.PreparedStatement=DEBUG
 ```
 
 ![image-20210112124311934](/home/kalao/.config/Typora/typora-user-images/image-20210112124311934.png)
+
+
+
+# 注解Annotation
+
+> 是从JDK5.0开始引入的新技术
+
+注解的作用:
+
+1. 不是程序本身,可以对程序作出解释
+2. 可以被其他程序读取
+
+作用对象:
+
+- 在package,class,method,field上面,相当于给他们添加了
+
+  额外的辅助信息,我们可以通过反射机制实现对这些元数据的访问.
+
+示例:
+
+@Override 重写的注解
+
+@Deprecated 不推荐使用
+
+@SuppressWarnings("")抑制警告
+
+元注解:
+
+> 元注解的作用是负责注解其他注解
+
+@Target :表示我们的注解可以放在哪些地方
+
+@Retention 表示我们的注解在什么地方(时候)有效
+
+```
+@Retention(value=RetentionPolicy.RUNTIME)
+```
+
+runtime>class>sources
+
+@Documented 表示是否将我们的注解生成在JAVAdoc中
+
+@Inherited:说明子类可以继承父类中的该注解
+
+自定义注解
+
+> 使用@interface自定义注解时,自动继承了java.lang.annotation.Annotation接口
+
+![image-20210113165509210](/home/kalao/.config/Typora/typora-user-images/image-20210113165509210.png)
+
+在自定义注解的时候,注解的参数是类似于函数形式,名称就是参数的名称,参数的返回值只能是基本类型,class,String,enum,参数必须要有值,一般会给默认的值(default关键词来付给参数默认值)
+
+```java
+@Target(ElementType.METHOD)
+@interface myano{
+    String school() default "清华大学";
+}
+
+@myano(school="武汉理工大学")
+```
+
+# 反射
+
+### 动态语言
+
+> 可以根据某些条件改变自身结构,python,js,php都是动态语言
+>
+> 举个例子,比如在js中一串文本,js可以将其执行.就是类型可以变换,不仅仅是强制类型转换这种,很随意的.(个人理解)
+
+### 静态语言
+
+> 运行时候结构不变.java不是动态语言,但java可以通过反射机制获得类似动态语言的特性
+
+> 反射是java被视为动态语言的关键,反射机制允许程序在执行期间借助reflection API取得任何类的内部信息,并能操作任意对象的内部属性以及方法.
+
+```java
+Class c=Class.forName("java.lang.String")
+```
+
+> 加载完类之后,在堆内存的方法区就产生了一个Class类型的对象(一个类只有一个Class对象),这个对象就包含了完整的类的结构信息.我们可以通过这个对象看到类的结构.这个对象就像一面镜子,通过这个镜子看到类的结构,所以我们形象称之为:反射.
+
+![image-20210113191612842](/home/kalao/.config/Typora/typora-user-images/image-20210113191612842.png)
+
+### Java反射机制提供的功能
+
+![image-20210113192105149](/home/kalao/.config/Typora/typora-user-images/image-20210113192105149.png)
+
+Java反射优点和缺点
+
+![image-20210113192358954](/home/kalao/.config/Typora/typora-user-images/image-20210113192358954.png)
+
+
+
+Java反射的API
+
+![image-20210113192510784](/home/kalao/.config/Typora/typora-user-images/image-20210113192510784.png)
+
+### Class类
+
+```java
+Class  c = Class.forName("com.mybatis01.pojo.user");
+```
+
+> 这里反射个人理解是从对象反向映射对应的类
+
+![image-20210113194225186](/home/kalao/.config/Typora/typora-user-images/image-20210113194225186.png)
+
+![image-20210113194635518](/home/kalao/.config/Typora/typora-user-images/image-20210113194635518.png)
+
+#### class类常用方法
+
+![image-20210113194745744](/home/kalao/.config/Typora/typora-user-images/image-20210113194745744.png)
+
+#### 获取Class类的实例
+
+![image-20210113194824761](/home/kalao/.config/Typora/typora-user-images/image-20210113194824761.png)
+
+哪些对象有Class对象
+
+![image-20210113200030006](/home/kalao/.config/Typora/typora-user-images/image-20210113200030006.png)
+
+#### 类的加载过程
+
+![image-20210113203532124](/home/kalao/.config/Typora/typora-user-images/image-20210113203532124.png)
+
+![image-20210113211151989](/home/kalao/.config/Typora/typora-user-images/image-20210113211151989.png)
+
+![image-20210113213150611](/home/kalao/.config/Typora/typora-user-images/image-20210113213150611.png)
+
+![image-20210113210822799](/home/kalao/.config/Typora/typora-user-images/image-20210113210822799.png)
+
+
+
+![image-20210113211010625](/home/kalao/.config/Typora/typora-user-images/image-20210113211010625.png)
+
+初始化是按照定义的顺序来
+
+![image-20210113210431304](/home/kalao/.config/Typora/typora-user-images/image-20210113210431304.png)
+
+
+
+
+
+![image-20210113212413315](/home/kalao/.config/Typora/typora-user-images/image-20210113212413315.png)
+
+ 

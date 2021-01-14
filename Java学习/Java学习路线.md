@@ -20,19 +20,27 @@
 
 2018百战程序员JAVA全系列终结版第08阶：IO流技术
 
-2018百战程序员JAVA全系列终结版第09阶：多线程
+2018百战程序员JAVA全系列终结版第09阶：多线程  ^^
+
+狂神说:https://www.bilibili.com/video/BV1V4411p7EF
 
 2018百战程序员JAVA全系列终结版第10阶：网络编程
 
 2018百战程序员JAVA全系列终结版第11阶：手写服务
 
-2018百战程序员JAVA全系列终结版第12阶：注解_反射_字节码_类加载机制
+2018百战程序员JAVA全系列终结版第12阶：注解_反射_字节码_类加载机制  ^^
+
+狂神说:https://www.bilibili.com/video/BV1p4411P7V3
 
 2018百战程序员JAVA全系列终结版第13阶：GOF23设计模式全解
+
+
 
 2018百战程序员JAVA全系列终结版第14阶：正则表达式和文本操作
 
 2018百战程序员JAVA全系列终结版第15阶：JDBC数据库操作
+
+狂神说:https://www.bilibili.com/video/BV1NJ411J79W
 
 2018百战程序员JAVA全系列终结版第16阶：手写SORM框架
 
@@ -104,9 +112,13 @@
 
 狂神说:https://www.bilibili.com/video/BV1NE411Q7Nx?p=24
 
-2018百战程序员JAVA全系列终结版第50阶：Spring4
+2018百战程序员JAVA全系列终结版第50阶：Spring4^^
 
-2018百战程序员JAVA全系列终结版第51阶：SpringMVC
+狂神说:https://www.bilibili.com/video/BV1WE411d7Dv
+
+2018百战程序员JAVA全系列终结版第51阶：SpringMVC ^^
+
+狂神说:https://www.bilibili.com/video/BV1aE41167Tu
 
 2018百战程序员JAVA全系列终结版第52阶：SSM框架整合和核心要点复习
 
@@ -134,9 +146,11 @@
 
 2018百战程序员JAVA全系列终结版第64阶： Linux系统快速使用
 
-2018百战程序员JAVA全系列终结版第65阶： Maven技术
+2018百战程序员JAVA全系列终结版第65阶： Maven技术 ^^
 
-2018百战程序员JAVA全系列终结版第66阶：GIT应用
+
+
+2018百战程序员JAVA全系列终结版第66阶：GIT应用 ^^
 
 2018百战程序员JAVA全系列终结版第67阶：maven私服与git应用
 
@@ -196,7 +210,7 @@
 
 2018百战程序员JAVA全系列终结版第97阶：VSFTPD+NGINX
 
-2018百战程序员JAVA全系列终结版第98阶：01. SpringBoot入门  
+2018百战程序员JAVA全系列终结版第98阶：01. SpringBoot入门  ^^
 
 2018百战程序员JAVA全系列终结版第99阶：02. SpringBoot整合Web开发
 
@@ -330,7 +344,7 @@ https://github.com/funtl/
 #### linux
 
 - linux基本命令
-- docker
+- docker   ^^
 - docker compose
 
 
