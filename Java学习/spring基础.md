@@ -2,1232 +2,1092 @@
 
 
 
+# 一 Spring
+
+### 1.1 背景
+
+
+- ## Spring以interface21为基础
+
+- Spring作者是Rod Johnson
+- Spring理念,使现有的技术更加容易使用,整合现有的技术框架,大砸会
+
+SSM:SpringMVC+Spring+Mybatis
+
+下载:
+
+https://repo.spring.io/libs-release-local/org/springframework/spring/
+
+github:
+
+https://github.com/spring-projects/spring-framework/issues
+
+
+
+文档:
+
+https://docs.spring.io/spring-framework/docs/3.0.x/javadoc-api/org/springframework/
+
+### 1.2 优点
+
+> spring是轻量级的控制反转和面向切片的框架
+
+- spring是开源的免费的框架
+- spring是一个轻量,非入侵式的框架
+- 控制反转IOC,面向切片AOP
+- 支持事务的处理
+- 对框架整合的支持
+
+### 1.3 组成
+
+![image-20210115200434148](/home/kalao/.config/Typora/typora-user-images/image-20210115200434148.png)
+
+### 1.4 扩展
+
+![image-20210115200615489](/home/kalao/.config/Typora/typora-user-images/image-20210115200615489.png)
+
+- springboot
+  - 一个快速开发的脚手架
+  - 基于springBoot可以快速的开发单个微服务
+  - 约定大于配置
+  - 基础spring+springmvc
+- springcloud
+  - springcloud是基于springboot
+
+# 二 IOC理论推导
+
+
+
+在以前我们可以定义一个接口,然后调用的时候new一个实现类
+
+如果对于一个内部代码,需要修改内部的实现,那么这样对于使用者来说,这是一个灾难,牵一发而动全身.那么如果从外部动态的设置,那么内部代码不需要改变
 
 
 
 
-# Mybatis
 
-## 简单的一个mybatis项目
+换句话说其实创建实现的方式取决于需求方,而不是接收方,对于接收方只需要一个接口.
+
+在之前由于需求方没有所谓的多种需求(更改实现),那么就无所谓谁来提供创建,但是一旦需求多了,对于接受方如果频繁修改代码这是不现实,假如有10000个人有10000个不同的需求,那么接收方难道为每个需求更改一次源码吗,这是不合理的.让使用我们代码的人自己来选择实现.
+
+- 这种思想,从本质上解决了问题,我们程序员不用在去管理对象的创建了.系统的耦合性大大降低.
+
+![image-20210115213343916](/home/kalao/.config/Typora/typora-user-images/image-20210115213343916.png)
+
+![image-20210115213649173](/home/kalao/.config/Typora/typora-user-images/image-20210115213649173.png)
 
 
 
 
 
-### 一、导入maven依赖
+### bean.xml
 
 ```xml
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.4.5</version>
-        </dependency>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="xiaokuang" class="com.spring02.pojo.user">
+        <property name="name" value="kuanghao"/>
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- more bean definitions go here -->
+
+</beans>
 ```
 
-### 二、mybatis的核心配置文件
+### 实例化容器
 
-包括数据源datasource和事物管理,以及注册定义的Mapper.xml
-
-这里useSSL可能要设置为false
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="*****"/>
-            </dataSource>
-        </environment>
-    </environments>
-    <mappers>
-        <mapper resource="com/mybatis01/dao/userMapper.xml"/>
-    </mappers>
-</configuration>
-```
-
-
-
-### 三、mybatis使用的基本流程
-
-
-
-#### 3.1、定义实体类
 
 ```java
-package com.mybatis01.pojo;
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        user xiaokuang = (user)context.getBean("xiaokuang");
+        System.out.println(xiaokuang.getName());
+```
 
+简单示例:
+
+我们可以在xml文件中替换userDao的实现
+
+![image-20210115223228881](/home/kalao/.config/Typora/typora-user-images/image-20210115223228881.png)
+
+
+
+# 三 IOC容器(spring 配置)
+
+### 3.1 别名
+
+```xml
+<alias name="xiaokuang" alias="xiaol"/>
+```
+
+不仅如此name还可以定义别名
+
+
+```xml
+<bean id="xiaokuang" class="com.spring02.pojo.user" name="user1 user2;user3,user4">
+    <property name="name" value="kuanghao"/>
+</bean>
+```
+
+### 3.2 Bean的配置
+
+
+
+```xml
+<bean id="xiaokuang" class="com.spring02.pojo.user" name="user1 user2;user3,user4">
+    <property name="name" value="kuanghao"/>
+</bean>
+```
+
+### 3.3 import
+
+> 由于实际开发过程中,有可能几个人同时开发,那么几个人都有独立的bean.xml文件,那么需要将几个人的文件统一,最后统一使用总的(applicationContext.xml).
+
+```xml
+<import resource="bean1.xml"/>
+```
+
+### 3.4 Dependencies
+
+> 依赖注入: Set注入
+>
+> 依赖: bean对象的创建依赖于容器
+>
+> 注入:bean对象中的所有属性,由容器来注入
+
+#### 	3.4.1 构造器注入
+
+#### 	3.4.2 set方式注入
+
+- 普通值的注入
+
+```xml
+ <property name="name" value="kuanghao"/>
+```
+
+- bean注入,引用
+
+```xml
+ <property name="name" ref="kuanghao"/>
+```
+
+- 其他的
+
+1. array,list
+
+   ```xml
+   <array>
+   	<value>1</value>
+   	<value>2</value>
+   </array>
+   <list>
+   	<value>1</value>
+   	<value>2</value>
+   </list>
+   ```
+
+   
+
+2. Map
+
+   ```xml
+   <map>
+               <entry key="an entry" value="just some string"/>
+               <entry key ="a ref" value-ref="myDataSource"/>
+   </map>
+   ```
+
+   
+
+3. set
+
+```xml
+<set>
+            <value>just some string</value>
+            <ref bean="myDataSource" />
+</set>
+```
+
+- null
+
+```xml
+<null/>
+```
+
+- properties
+
+```xml
+    <property name="adminEmails">
+        <props>
+            <prop key="administrator">[emailprotected]</prop>
+            <prop key="support">[emailprotected]</prop>
+            <prop key="development">[emailprotected]</prop>
+        </props>
+    </property>
+```
+
+
+
+#### 3.4.3 扩展方式注入
+
+c命名空间注入
+
+> 允许你用bean元素的属性来代替嵌套的元素
+
+
+
+p命名空间注入
+
+> p-namespace 允许您使用`bean`元素的属性(而不是嵌套的`<property/>`元素)来描述协作 Bean 的属性值，或同时使用这两者。
+
+```xml
+<bean id="xiaokuang" class="com.spring02.pojo.user" name="user1 user2;user3,user4" p:status="1">
+    <property name="name" value="kuanghao" />
+    <!-- collaborators and configuration for this bean go here -->
+</bean>
+```
+
+### 3.5 bean的作用域
+
+
+
+| Scope                                                        | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [singleton](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-scopes-singleton) | (默认)将每个 Spring IoC 容器的单个 bean 定义范围限定为单个对象实例。 |
+| [prototype](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-scopes-prototype) | 将单个 bean 定义的作用域限定为任意数量的对象实例。           |
+| [request](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-scopes-request) | 将单个 bean 定义的范围限定为单个 HTTP 请求的生命周期。也就是说，每个 HTTP 请求都有一个在单个 bean 定义后面创建的 bean 实例。仅在可感知网络的 Spring `ApplicationContext`中有效。 |
+| [session](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-scopes-session) | 将单个 bean 定义的范围限定为 HTTP `Session`的生命周期。仅在可感知网络的 Spring `ApplicationContext`上下文中有效。 |
+| [application](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-scopes-application) | 将单个 bean 定义的范围限定为`ServletContext`的生命周期。仅在可感知网络的 Spring `ApplicationContext`上下文中有效。 |
+| [websocket](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/web.html#websocket-stomp-websocket-scope) | 将单个 bean 定义的范围限定为`WebSocket`的生命周期。仅在可感知网络的 Spring `ApplicationContext`上下文中有效。 |
+
+注意: 单例模式是默认的
+
+### 3.6 bean的自动装配
+
+- 自动装配是spring满足bean依赖一种方式
+- spring会在上下文中自动寻找,并自动给bean装配属性
+
+在spring中有三种装配的方式
+
+1. 在xml中显式的配置
+2. 在java中显式配置
+3. 隐式的自动装配bean(重要)
+
+- **在xml中显式的配置**
+
+在bean的属性添加autowire="byName"
+
+> 会自动在容器上下文中查找,和自己对象set方法后面的值对应的beanid,但是需要保证bean的id唯一
+
+在bean的属性添加autowire="byType"
+
+> 会自动在容器上下文中查找,和自己对象属性类型相同的bean,但是需要保证bean的class唯一
+
+- 使用注解方式
+
+spring2.5开始支持
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+</beans>	
+```
+
+
+
+1. 导入约束
+
+   ```xml
+   xmlns:context="http://www.springframework.org/schema/context"
+   ```
+
+   
+
+2. 配置注解支持(不加,注解无效)
+
+```xml
+ <context:annotation-config/>
+```
+
+示例:
+
+```xml
+<bean id="category" class="com.spring02.pojo.category" p:name="good">
+</bean>
+```
+
+
+
+```java
 public class user {
-    private Integer id;
-    private String  name;
+    private String name;
+    private Integer status;
+    @Autowired
+    private category category;
+}
+```
 
-    public user() {
-    }
+@Autowired
 
-    public Integer getId() {
-        return id;
-    }
+1. 可以直接在属性上使用,也可以在set方法上使用
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+2. 使用Autowired,我们可以不用编写set方法,前提是你这个自动装配的属性在IOC容器中存在,且符合名字byName
 
-    public String getName() {
-        return name;
-    }
+3. 科普
 
-    @Override
-    public String toString() {
-        return "user{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+   字段标记了这个注解,说明这个字段可以为null
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   ```java
+   @Nullable 
+   ```
 
-    public user(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+   ```java
+   public @interface Autowired {
+       boolean required() default true;
+   }//为false的时候字段允许为null
+   ```
+
+   @Qualifier(value="name")
+
+   ```java
+   public class user {
+       private String name;
+       private Integer status;
+       @Autowired
+       @Qualifier("category1")
+       private category category;
+   }
+   ```
+
+   @Resource相比@Autowired的区别
+   
+   - 都是用于自动装配
+   - @Autowired是通过byType,而@Resource通过byName找不到,再通过byType
+   - @Resource可以实现指定的beanid
+
+### 3.7 使用注解开发
+
+#### 1. 在spring4以后,要使用注解开发,必须保证aop的包导入了
+
+![image-20210119142814764](/home/kalao/.config/Typora/typora-user-images/image-20210119142814764.png)
+
+```xml
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-webmvc</artifactId>
+  <version>5.3.3</version>
+</dependency>
+```
+
+#### 2. 指定要扫描的包
+
+```xml
+<context:component-scan base-package="com.spring02.pojo"/>
+```
+
+#### 3. 常用的一些注解
+
+##### 1.@Component
+
+> 名字默认是class的小写,@Component相当于如下写法:
+
+```xml
+
+<bean id="category" class="com.spring02.pojo.category"/>
+```
+
+```java
+@Component
+public class Category {
+    private String name;
+}
+
+```
+
+
+
+##### 		2.@Value
+
+> 为属性注入值,相当于如下:,还可以在set方法上写
+
+```xml
+<property name="name" value="小伙子" />
+```
+
+```java
+@Component
+public class category {
+    @Value("小伙子")
+    private String name;
+}
+```
+
+##### 		3.衍生的注解
+
+@Component有几个衍生注解,我们在web开发中,会按照mvc三层架构分层
+
+- dao         @Repository
+- service   @Service
+- controller @Controller
+
+这四个功能是一样的,将类注册到spring
+
+##### 4. 设置作用域 
+
+@Scope("singleton")
+
+#### 3.8 使用java的方式配置spring
+
+![image-20210119175033066](/home/kalao/.config/Typora/typora-user-images/image-20210119175033066.png)
+
+
+
+
+
+
+
+```java
+@Configuration
+@ComponentScan("com.spring02.pojo")
+public class myConfig {
+    @Bean
+    public user getUser(){
+        return new user();
     }
 }
 ```
 
-#### 3.2 、定义mapper接口+mapper配置文件/注解(sql模板)
+> 这个方法的名字,就相当于bean标签的id属性
+>
+> 这个方法的返回值,就相当于bean标签中的class属性
+>
+>  return new user(); 就是返回要注入到bean的对象
+
+
+
+```java
+@Component
+public class user {
+    private String name;
+    private Integer status;
+    @Resource
+    private category category;
+}
+```
+
+```java
+@Component
+public class category {
+    @Value("小伙子")
+    private String name;
+}
+```
+
+@import 相当于导入其他的bean.xml
+
+### 4.总结
+
+注解相对简单,但是有局限,不是自己类使用不了.
+
+xml更加万能,适用任何场合.
+
+综合来看,注解用于属性注入,xml用于bean的管理
+
+# 四 代理模式
+
+
+
+![image-20210120161156924](/home/kalao/.config/Typora/typora-user-images/image-20210120161156924.png)
+
+> 个人感觉,代理是种强化后的角色
+>
+> 在不改变原有角色的情况下,需要增强角色,代理模式能发挥其作用
+
+## 4.1 角色分析
+
+- 抽象角色: 一般会使用接口或者抽象类来解决
+- 真实角色:被代理的角色
+- 代理角色:代理真实角色的角色,代理真实角色后,我们一般会做一些附属操作
+- 客户:访问代理角色的人
+
+## 4.2代理模式的好处和坏处
+
+好处:
+
+- 可以使得真实角色的操作更加纯粹!不用去关注一些公共的业务(实现业务分工)
+- 公共业务发生扩展的时候,方便集中管理
+
+坏处:
+
+- 一个代理对应一个真实角色,代码量增大,开发效率变低.
+
+
+
+![image-20210120183922373](/home/kalao/.config/Typora/typora-user-images/image-20210120183922373.png)
+
+
+
+## 4.3静态代理
+
+示例:
+
+```java
+public interface userDao {
+    void show();
+}
+```
+
+```java
+@Component
+//@Getter
+public class userDaoImpl implements  userDao {
+    @Override
+    public void show() {
+        System.out.println("this is userDaoImpl");
+    }
+}
+```
+
+```java
+@Component
+public class userDaoProxy implements userDao {
+    @Autowired
+    private userDao userDao;
+    @Override
+    public void show() {
+        System.out.println("start...");
+        userDao.show();
+        System.out.println("end...");
+    }
+}
+```
+
+## 4.4动态代理
+
+
+
+> 动态代理是动态生成的,动态代理分为两类,一类基于接口_(JDK动态代理),一种基于类_(cglib),还有基于java字节码_(javasisit)
+
+![image-20210120192647475](/home/kalao/.config/Typora/typora-user-images/image-20210120192647475.png)
+
+
+
+```java
+@AllArgsConstructor
+public class ProxyInvocationHandler implements InvocationHandler {
+    private Object ud;
+    //动态生成代理类,需要传递要代理对象实现的接口,即可动态生成,相比之前自己创建来的简便
+    public  Proxy getProxy(){
+        return (Proxy) Proxy.newProxyInstance(this.getClass().getClassLoader()
+                ,ud.getClass().getInterfaces()
+                , this);
+    }
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("hi----------");
+        method.invoke(ud,args);
+        return null;
+    }
+}
+```
+
+# 五 AOP
+
+
+
+涉及的场景
+
+**日志,安全,缓存**,**事务**
+
+
+
+![image-20210120205009450](/home/kalao/.config/Typora/typora-user-images/image-20210120205009450.png)
+
+
+
+![image-20210120205133779](/home/kalao/.config/Typora/typora-user-images/image-20210120205133779.png)
+
+
+
+![image-20210120205518096](/home/kalao/.config/Typora/typora-user-images/image-20210120205518096.png)
+
+## 5.2 spring接口实现
+
+
+
+在org.springframework.aop下的一堆接口
+
+![image-20210120210302544](/home/kalao/.config/Typora/typora-user-images/image-20210120210302544.png)
+
+需要引入依赖
+
+```xml
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.2</version>
+</dependency>
+```
+
+### MethodBeforeAdvice接口
+
+> 用于前置通知
+
+![image-20210120214246123](/home/kalao/.config/Typora/typora-user-images/image-20210120214246123.png)
+
+```java
+@Component
+public class log implements MethodBeforeAdvice {
+    @Override
+    public void before(Method method, Object[] args, Object target) throws Throwable {
+        System.out.println("before");
+
+    }
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <context:component-scan base-package="com.spring02.dao"/>
+    <context:annotation-config/>
+    <aop:config>
+        //切入点  expression表示要切入的位置
+        <aop:pointcut id="pointcut" expression="execution(* com.spring02.dao.userDaoImpl.*(..))"/>
+        //通知
+        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>
+    </aop:config >
+
+</beans>
+```
+
+```java
+@Component
+//@Getter
+public class userDaoImpl implements  userDao {
+    @Override
+    public void show() {
+        System.out.println("this is userDaoImpl");
+    }
+}
+```
+
+注意:
+
+```java
+userDao userDaoImpl = (userDao)context.getBean("userDaoImpl");//测试的时候,这里不能转为userDaoImpl,由于此时已经为代理对象,所以只能向上转型,而不能同级转型
+userDaoImpl.show();
+```
+
+#### 5.2.1 expression表达式
+
+## 5.3 自定义类实现
+
+> 不需要像上述方法,每次为每个通知都实现一个类,而在一个自定义类统一解决
+
+beans.xml
+
+```xml
+<aop:config>
+    <!-- 定义切面-->
+    <aop:aspect ref="newLog">
+        <!--定义切入点-->
+        <aop:pointcut id="pointcut" expression="execution(* com.spring02.dao.userDaoImpl.*(..))"/>
+        <!--定义通知-->
+        <aop:before method="before" pointcut-ref="pointcut"/>
+        <aop:after method="after" pointcut-ref="pointcut"/>
+    </aop:aspect>
+</aop:config>
+```
+
+```java
+@Component
+public class newLog {
+    public void before(){
+        System.out.println("before");
+    }
+    public void after(){
+        System.out.println("after");
+
+    }
+}
+```
+
+## 5.4 注解的方式
+
+###   1. 首先开启aop注解支持
+
+```xml
+<!-- 扫描要检查注解的包-->
+    <context:component-scan base-package="com.spring02.dao"/>
+<!-- 开启spring注解支持   -->
+    <context:annotation-config/>
+<!--  开启aop注解支持 JDK(默认)和cglib-->
+    <aop:aspectj-autoproxy/>
+```
+
+```xml
+<!--jdk-->
+<aop:aspectj-autoproxy proxy-target-class="false"/>
+<!-- cglib-->
+<aop:aspectj-autoproxy proxy-target-class="true"/>
+```
+
+
+```java
+@Component
+@Aspect //切面
+public class newLog {
+    @Before("execution(* com.spring02.dao.userDaoImpl.*(..))")//切入点,通知
+    public void before(){
+        System.out.println("before");
+    }
+    @After("execution(* com.spring02.dao.userDaoImpl.*(..))")
+    public void after(){
+        System.out.println("after");
+
+    }
+}
+```
+
+```
+before
+this is userDaoImpl
+after
+```
+
+### 2. 环绕
+
+
+
+```java
+@Around("execution(* com.spring02.dao.userDaoImpl.*(..))")
+public void around(ProceedingJoinPoint jp){
+    System.out.println("环绕前");
+    try {
+        jp.proceed();
+    } catch (Throwable throwable) {
+        throwable.printStackTrace();
+    }
+    System.out.println("环绕后");
+}
+```
+
+```java
+output:
+    环绕前
+    before
+    this is userDaoImpl
+    after
+    环绕后
+```
+
+
+
+
+
+# 一些疑问
+
+
+
+1. 
+
+   我遇到了一个例子`@Autowired`：
+
+   ```
+   public class EmpManager {
+      @Autowired
+      private EmpDao empDao;
+   }
+   ```
+
+   我很好奇`empDao`如何注入的，因为没有setter方法，而且它是私有的。
+
+> Java allows access controls on a field or method to be turned off 
+>
+> 如上所说,java允许权限控制被关闭,那么私有的也可以访问,因而可以被注入
+
+- http://stackoverflow.com/questions/3536674/how-does-spring-autowired-work
+- http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/util/ReflectionUtils.html
+
+# 六 整合mybatis
+
+## 1. 步骤
+
+####  1.导入相关jar包
+
+- junit
+- mysql数据库
+- mybatis
+- spring相关
+- mybatis-spring 整合包
+- aop注入
+
+```xml
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.23</version>
+</dependency>
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.5.2</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>5.3.3</version>
+</dependency>
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>2.0.6</version>
+</dependency>
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.2</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>5.1.9.RELEASE</version>
+</dependency>
+```
+
+#### 2. bean.xml文件
+
+这里已经将mybatis-config文件融入到这个bean.xml文件里,并将sqlSessionFactory,sqlSession也交由spring来管理
+
+这里是mybatis-spring这个包下提供的SqlSessionFactoryBean和SqlSessionTemplate(注意只能构造器注入)来实例化.
+
+另外自己YY一下spring-jdbc这个替换也隐含了IOC的原理,我想替换只要写个bean就行.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+        <!--使用的是spring-jdbc来代替mybatis里的jdbc-->
+        <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="username" value="root"/>
+            <property name="password" value="A123456a&amp;"/>
+        </bean>
+        <!--sqlSessionFactory-->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <!--就是mybatis.xml配置的那些内容 -->
+            <property name="dataSource" ref="datasource"/>
+             <!--这里还可以绑定mybatis-config ,由于我全部放在bean.xml中,所以感觉不太需要-->
+             <property name="configLocation" value=""/>
+            <property name="mapperLocations" value="classpath:com/sm/dao/userMapper.xml"/>
+        </bean>
+        <!-- sqlSession-->
+        <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+            <!--只能通过构造器的方法注入-->
+            <constructor-arg index="0" ref="sqlSessionFactory"/>
+        </bean>
+        <!--service-->
+        <bean id="userServiceImpl" class="com.sm.service.userServiceImpl">
+            <property name="sqlSession" ref="sqlSession"/>
+        </bean>
+</beans>
+```
+
+
 
 ```java
 public interface userMapper {
-    public List<user> getUserList();
+//    @Select("select * from user")
+    public List<user> findAllUser();
+//    @Select("select * from user where id=#{id}")
+    public user findById(Integer id);
 }
 ```
 
-```xml-dtd
+```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis01.dao.userMapper">
-    <select id="getUserList" resultType="com.mybatis01.pojo.user">
+<mapper namespace="com.sm.dao.userMapper">
+    <select id="findAllUser" resultType="com.sm.pojo.user">
         select * from user
   </select>
 </mapper>
 ```
 
-namespace="***" 是用于绑定userMapper),定义的sql语句配置其实就是用于实现接口.
-
-#### 3.3、mybatis工具类用于产生sqlSession对象
-
 ```java
-public class mybatisUtils {
-    public static SqlSessionFactory sqlSessionFactory;
-    static {
-        String resource = "mybatis.xml";
-        InputStream inputStream = null;
-        try {
-            inputStream = Resources.getResourceAsStream(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+@Setter
+public class userServiceImpl implements userServcie {
+    private SqlSessionTemplate sqlSession;
 
-    }
-    public static SqlSession getSqlSession(){
-        return sqlSessionFactory.openSession();
-    }
-
-}
-
-```
-
-
-
-#### 3.4、通过sqlsession获得mapper执行SQL(获得实现Mapper接口的对象,内部使用反射机制实现,从而调用相应方法)
-
-##### 查询测试
-
-```java
-    @Test
-    public void getUserList(){
-
-        SqlSession sqlSession = mybatisUtils.getSqlSession();
-
+    public void findAllUser(){
+        System.out.println("这是service...");
         userMapper mapper = sqlSession.getMapper(userMapper.class);
-
-        List<user> userList = mapper.getUserList();
-
-        for(user user:userList){
+        List<user> allUser = mapper.findAllUser();
+        for (user user: allUser) {
             System.out.println(user);
         }
     }
-```
 
-##### 插入测试
-
-```java
-public interface userMapper {
-    public List<user> getUserList();
-    public void addUser(user user);
 }
 ```
 
-```xml
-<insert id="addUser" parameterType="com.mybatis01.pojo.user">
-    insert into mybatis.user(id,name)values (#{id},#{name})
-</insert>
-```
+#### 3.测试
 
 ```java
-@Test
-public void addUserTest(){
-    SqlSession sqlSession = mybatisUtils.getSqlSession();
+public class userServiceImplTest {
+    public static ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+
+    @Test
+    public void findAllUser() {
+        userServcie userServiceImpl = (userServcie) context.getBean("userServiceImpl");
+        userServiceImpl.findAllUser();
+    }
+}
+```
+
+```
+这是service...
+user(id=1, name=1)
+user(id=2, name=2)
+user(id=3, name=3)
+user(id=4, name=4)
+user(id=5, name=5)
+```
+
+#### 4. SqlSessionDaoSupport是一个抽象的支持类
+
+> 一旦继承之后,它会帮我们生成sqlSession,在spring管理的时候,也就少一个sqlsession的注入,取而代之的是对继承的这个对象需要注入sqlsessionFactory.
+
+
+
+# 七 声明式事务
+
+
+
+1. 一组业务要么成功,要么失败
+2. 事务在项目开发中,十分重要,涉及到数据的完整性和一致性
+
+事务的ACID原则
+
+- 原子性
+- 一致性
+- 隔离性
+
+多个业务可能操作同一个资源,防止数据损坏
+
+- 持久性
+
+事务一旦提交,无论系统发生什么问题,结果都不会被影响
+
+## spring的事务管理
+
+- ### 声明式 如下操作,可以不需要修改源码,在配置文件里面使用aop方法实现
+
+- 编程式  在代码里面显式的写异常处理,然后进行回滚
+
+![image-20210121173329966](/home/kalao/.config/Typora/typora-user-images/image-20210121173329966.png)
+
+![image-20210121173533570](/home/kalao/.config/Typora/typora-user-images/image-20210121173533570.png)
+
+
+
+
+```xml
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="datasource"/>
+  </bean>
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+      <tx:attributes>
+          <tx:method name="add" propagation="REQUIRED"/>
+          <tx:method name="delete" propagation="REQUIRED"/>
+          <tx:method name="query" read-only="true"/>
+          <tx:method name="update" propagation="REQUIRED"/>
+          <tx:method name="findAllUser" propagation="REQUIRED"/>
+      </tx:attributes>
+</tx:advice>
+
+
+
+<aop:config>
+    <aop:pointcut id="txpointcut" expression="execution(* com.sm.*.*.*(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="txpointcut"/>
+</aop:config>
+```
+
+
+
+```xml
+<tx:method name="add" propagation="REQUIRED"/>
+          <tx:method name="delete" propagation="REQUIRED"/>
+          <tx:method name="query" read-only="true"/>
+          <tx:method name="update" propagation="REQUIRED"/>
+```
+
+上述其实是对表的业务做了事务操作
+
+```xml
+ <tx:method name="findAllUser" propagation="REQUIRED"/>
+```
+
+上述是对一个具体的业务(service层的findAlluser)做了事务操作
+
+
+
+```java
+public void findAllUser(){
+    System.out.println("这是service...");
     userMapper mapper = sqlSession.getMapper(userMapper.class);
     mapper.addUser(new user(5,"5"));
-    sqlSession.commit();
-    sqlSession.close();
+    mapper.delUser(new user(5,"5"));
 
 }
 ```
 
-> 注意增删改是需要commit的
-
-注意:
-
-1. 我们可以用map来代替实体类作为参数 
-
-##### 模糊查询
-
-```java
-select * from user where name like "%李%"
-1 传入 "%李%"
-2 写死
-    select * from user where name like "%"#{parm}"%"
-```
-
-### 四、配置
-
-1. mybatis可以配置成适用多种环境(mysql,oracle)
-2. mybatis的事物管理是JDBC,连接池是POOLED
-3. 可以将数据库的配置用db.properties 来导入到mybatis中
-
-MORE DETAILS:https://mybatis.org/mybatis-3/zh/configuration.html#environments
-
-```
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
-<!--   引入db.properties -->
-    <properties resource="db.properties"></properties>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
-            </dataSource>
-        </environment>
-    </environments>
-    <mappers>
-        <mapper resource="com/mybatis01/dao/userMapper.xml"/>
-    </mappers>
-</configuration>
-```
-
-### 五、可能遇到的问题
-
-1. 在java文件夹下的xml文件无法find,需要对java里的文件进行过滤,将其作为resources的一部分来源.
-
-![image-20210110163749664](https://github.com/kalao/Images/blob/master/spring基础.md/20210110163749664.png)
-
-### 五、[类别别名](https://mybatis.org/mybatis-3/zh/configuration.html#typeAliases)
-
-1. 在mybatis配置文件下加入,定义com.mybatis01.pojo.user的别名为user
-
-   ```xml
-   <typeAliases >
-       <typeAlias type="com.mybatis01.pojo.user" alias="user"></typeAlias>
-   </typeAliases>
-   ```
-
-2. 在userMapper.xml下使用
-
 ```xml
-<select id="getUserList" resultType="user">
-      select * from user
-</select>
+<insert id="addUser" parameterType="com.sm.pojo.user">
+    insert into user(id,name) values (#{id},#{name})
+</insert>
+<delete id="delUser" parameterType="com.sm.pojo.user">
+    deletes from user where id =#{id}
+</delete>
 ```
 
-1. 还可以指定一个包,那么mybatis会在这个包下去搜索java bean,默认是小写类名去对应这个类.
+上面的deletes是故意写错,在不加事务管理的时候,    mapper.addUser(new user(5,"5"));是可以执行成功,但是 mapper.delUser(new user(5,"5"));出现异常.
 
-   ```xml
-       <typeAliases >
-           <package name="com.mybatis01.pojo"/>
-       </typeAliases>
-   ```
-
-   
-
-2. 在上面指定包的基础上,还可以使用注解的方式自定义包下某些类的别名
-
-```
-@Alias("hi")
-public class user {
-}
-```
-
-下面是一些为常见的 Java 类型内建的类型别名。它们都是不区分大小写的，注意，为了应对原始类型的命名重复，采取了特殊的命名风格。(节选一部分)
-
-| 别名     | 映射的类型 |
-| :------- | :--------- |
-| _byte    | byte       |
-| _long    | long       |
-| _short   | short      |
-| _int     | int        |
-| _integer | int        |
-| _double  | double     |
-| _float   | float      |
-| _boolean | boolean    |
-| string   | String     |
-| byte     | Byte       |
-| long     | Long       |
-| short    | Short      |
-| int      | Integer    |
-| integer  | Integer    |
-
-
-
-### 六、设置
-
-| 设置名             | 描述                                                         | 有效值        | 默认值 |
-| :----------------- | :----------------------------------------------------------- | :------------ | :----- |
-| cacheEnabled       | 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。     | true \| false | true   |
-| lazyLoadingEnabled | 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 `fetchType` 属性来覆盖该项的开关状态。 | true \| false | false  |
-
-
-
-### 七、插件（plugins）
-
-- mybatis-plus
-- mybatis-generator
-
-
-
-### 八、映射器（mappers）
-
-
-
-![image-20210111104525952](https://github.com/kalao/Images/blob/master/spring基础.md/20210111104525952.png)
-
-1. 对于上面第三种方式和第四种,可能会遇到一些问题
-   - ​	主要有类和xml不在一个包内
-   - ​    类和xml名称不一致
-
-### 九 、生命周期和作用域
-
-![image-20210111110539872](https://github.com/kalao/Images/blob/master/spring基础.md/20210111110539872.png)
-
-![image-20210111111148142](https://github.com/kalao/Images/blob/master/spring基础.md/20210111111148142.png)
-
-mapper对应一个业务(实现类)
-
-### 十 、 resultMap
-
-当数据库的column和实体类的property不匹配的时候使用
-
-```
-<resultMap id="usermap" type="user">
-    <result column="id" property="id"></result>
-    <result column="name" property="value"></result>
-</resultMap>
-```
-
-对于一样的字段result可以省略
-
-```
-<resultMap id="usermap" type="user">
-    <result column="name" property="value"></result>
-</resultMap>
-```
-
-### 十一、 分页
-
-```xml
-<select id="getUserListLimit" parameterType="map" resultType="com.mybatis01.pojo.user">
-    select * from user limit #{startIndex},#{pageSize}
-</select>
-```
-
-### 十二、 注解
-
-```java
-@Select("select * from user")
-public List<user> getUserList();
-```
-
-​	在核心配置中定义mapper接口,下面必须保证没有对应的xml文件,不然注解就失效了
-
-```xml
-    <mappers>
-<!--        <mapper resource="com/mybatis01/dao/userMapper1.xml"/>-->
-        <mapper class="com.mybatis01.dao.userMapper"></mapper>
-    </mappers>
-```
-
-
-
- 对于含有多个参数(基本类型或者String类型)的必须在参数前面加@Parm("")
-
-
-
-### 十三、 执行过程
-
-![image-20210111221443343](https://github.com/kalao/Images/blob/master/spring基础.md/20210111221443343.png)
-
-![image-20210111221531389](https://github.com/kalao/Images/blob/master/spring基础.md/20210111221531389.png)
-
-
-
-![image-20210111221549476](https://github.com/kalao/Images/blob/master/spring基础.md/20210111221549476.png)
-
-
-
-![image-20210111221648880](https://github.com/kalao/Images/blob/master/spring基础.md/20210111221648880.png)
-
-
-
-### 十四、 关系处理
-
-#### 1、 多对一
-
-- comment评论
-
-![image-20210112164533328](https://github.com/kalao/Images/blob/master/spring基础.md/20210112164533328.png)
-
-- blog博客
-
-![image-20210112164812845](https://github.com/kalao/Images/blob/master/spring基础.md/20210112164812845.png)
-
-
-
-```java
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@ToString
-public class comment {
-    private Integer id;
-    private String content;
-    private blog blog;
-}
-```
-
-```java
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@ToString
-public class blog {
-    private Integer id;
-    private String title;
-}
-```
-
-
-
-##### mybatis里面实现子查询
-
-```xml
-    <resultMap id="BolgComments" type="com.mybatis01.pojo.comment">
-        <result property="id" column="id"></result>
-        <association property="blog" column="bid"  javaType="com.mybatis01.pojo.blog" select="getBlogs">
-        </association>
-    </resultMap>
-    <select id="getBlogs"  resultType="com.mybatis01.pojo.blog">
-        select * from blog where id=#{id}
-    </select>
-    <select id="getComment" resultMap="BolgComments" >
-        select * from comment
-    </select>
-```
-
-```
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-```
-
-
-
-
-- javaType:把sql语句查询出的结果集,封装给某个类的对象
-- select:下一条要执行的sql语句
-- column:在上一次查询结果集中,用哪些列值作为条件去执行下一条SQL语句.
-
-##### mybatis的结果集嵌套处理
-
-```java
-<resultMap id="bmap" type="com.mybatis01.pojo.comment">
-      <result property="id" column="cid"></result>
-        <result property="content" column="content"></result>
-        <association property="blog" javaType="com.mybatis01.pojo.blog">
-            <result property="id" column="blogid"></result>
-            <result property="title" column="title"></result>
-        </association>
-    </resultMap>
-    <select id="getComments" resultMap="bmap">
-       select blog.id blogid,comment.id cid,title,content  from blog,comment where blog.id=comment.bid
-    </select>
-```
-
-```java
-public interface blogMapper {
-    List<comment> getComments();
-}
-```
-
-```
-[com.mybatis01.dao.blogMapper.getComments]-==>  Preparing: select blog.id blogid,comment.id cid,title,content from blog,comment where blog.id=comment.bid 
-[com.mybatis01.dao.blogMapper.getComments]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getComments]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-```
-
-
-
-#### 2 、 一对多
-
-- comment评论
-
-
-![image-20210112164533328](https://github.com/kalao/Images/blob/master/spring基础.md/20210112164533328.png)
-
-- blog博客
-
-
-![image-20210112164812845](https://github.com/kalao/Images/blob/master/spring基础.md/20210112164812845.png)
-
-```java
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@ToString
-public class comment {
-    private Integer id;
-    private String content;
-}
-```
-
-```java
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@ToString
-public class blog {
-    private Integer id;
-    private String title;
-    private List<comment> comments;
-}
-```
-
-##### mybatis结果集嵌套
-
-```xml
-<resultMap id="Bmap" type="com.mybatis01.pojo.blog">
-    <result property="id" column="blogid"></result>
-    <result property="title" column="title"></result>
-    <collection property="comments" ofType="com.mybatis01.pojo.comment">
-        <result property="id" column="cid"></result>
-        <result property="content" column="content"></result>
-    </collection>
-</resultMap>
-<select id="getBlog" resultMap="Bmap">
-    select blog.id blogid,comment.id cid,title,content  from blog,comment where 	      blog.id=comment.bid and blog.id=#{id}
-</select>
-```
-
-
-```java
-public interface blogMapper {
-    blog getBlog(@Param("id") Integer id);
-}
-```
-
-```
-输出结果:
-[com.mybatis01.dao.blogMapper.getBlog]-==>  Preparing: select blog.id blogid,comment.id cid,title,content from blog,comment where blog.id=comment.bid and blog.id=? 
-[com.mybatis01.dao.blogMapper.getBlog]-==> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlog]-<==      Total: 3
-blog(id=1, title=starting, comments=[comment(id=1, content=so good), comment(id=2, content=agree you), comment(id=3, content=up)])
-
-```
-
-mybatis子查询方式:
-
-和下图类似略
-
-![image-20210112184947578](https://github.com/kalao/Images/blob/master/spring基础.md/20210112184947578.png)
-
-
-
-### 十五、动态SQL
-
-![image-20210112192114991](https://github.com/kalao/Images/blob/master/spring基础.md/20210112192114991.png)
-
-
-
-#### IF
-
-> 用于拼接一些条件,在前面没有条件的时候可以使用1=1 ,这样后面拼接才能用and **
-
-```xml
-<resultMap id="bmap" type="com.mybatis01.pojo.comment">
-  <result property="id" column="cid"></result>
-    <result property="content" column="content"></result>
-    <association property="blog" javaType="com.mybatis01.pojo.blog">
-        <result property="id" column="blogid"></result>
-        <result property="title" column="title"></result>
-    </association>
-</resultMap>
-<select id="getComments" resultMap="bmap">
-        select blog.id blogid,comment.id cid,title,content  from blog,comment where blog.id=comment.bid
-        <if test="title!=null">
-            and title like "%"#{title}"%"
-        </if>
-        <if test="content!=null">
-            and content like "%"#{content}"%"
-        </if>
-
-</select>
-```
-
-- 
-
-```java
-Map<String,Object> map=new HashMap<>();
-map.put("title","sta");
-map.put("content","g");
-for(comment comment :mapper.getComments(map)){
-    System.out.println(comment);
-}
-```
-
-```
-[com.mybatis01.dao.blogMapper.getComments]-==>  Preparing: select blog.id blogid,comment.id cid,title,content from blog,comment where blog.id=comment.bid and title like "%"?"%" and content like "%"?"%" 
-[com.mybatis01.dao.blogMapper.getComments]-==> Parameters: sta(String), g(String)
-[com.mybatis01.dao.blogMapper.getComments]-<==      Total: 2
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-```
-
-- 
-
-```java
-Map<String,Object> map=new HashMap<>();
-map.put("title","std");
-for(comment comment :mapper.getComments(map)){
-    System.out.println(comment);
-}
-```
-
-
-
-```
-[com.mybatis01.dao.blogMapper.getComments]-==>  Preparing: select blog.id blogid,comment.id cid,title,content from blog,comment where blog.id=comment.bid and title like "%"?"%" 
-[com.mybatis01.dao.blogMapper.getComments]-==> Parameters: std(String)
-[com.mybatis01.dao.blogMapper.getComments]-<==      Total: 0
-```
-
-
-
-#### where
-
-> *where* 元素只会在子元素返回任何内容的情况下才插入 “WHERE” 子句。而且，若子句的开头为 “AND” 或 “OR”，*where* 元素也会将它们去除。
-
-
-
-官网:https://mybatis.org/mybatis-3/zh/dynamic-sql.html
-
-```xml
-<select id="findActiveBlogLike"
-     resultType="Blog">
-  SELECT * FROM BLOG
-  <where>
-    <if test="state != null">
-         state = #{state}
-    </if>
-    <if test="title != null">
-        AND title like #{title}
-    </if>
-    <if test="author != null and author.name != null">
-        AND author_name like #{author.name}
-    </if>
-  </where>
-</select>
-```
-
-#### choose、when、otherwise
-
-> 有时候，我们不想使用所有的条件，而只是想从  **多个条件中选择一个**  使用。针对这种情况，MyBatis 提供了 choose 元素，它有点像 Java 中的 switch 语句。
-
-```xml
-<select id="findActiveBlogLike"
-     resultType="Blog">
-  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
-  <choose>
-    <when test="title != null">
-      AND title like #{title}
-    </when>
-    <when test="author != null and author.name != null">
-      AND author_name like #{author.name}
-    </when>
-    <otherwise>
-      AND featured = 1
-    </otherwise>
-  </choose>
-</select>
-```
-
-注意在外层最好嵌套一个where
-
-```xml
-<select id="findActiveBlogLike"
-     resultType="Blog">
-  SELECT * FROM BLOG 
-   <where>
-       <choose>
-           <when test="title != null">
-               AND title like #{title}
-           </when>
-           <when test="author != null and author.name != null">
-               AND author_name like #{author.name}
-           </when>
-           <otherwise>
-               AND featured = 1
-           </otherwise>
-       </choose>
-    </where>
-</select>
-```
-
-#### set 
-
-> 这个例子中，*set* 元素会动态地在行首插入 SET 关键字，并会删掉额外的逗号（这些逗号是在使用条件语句给列赋值时引入的）
-
-```xml
-<update id="updateAuthorIfNecessary">
-  update Author
-    <set>
-      <if test="username != null">username=#{username},</if>
-      <if test="password != null">password=#{password},</if>
-      <if test="email != null">email=#{email},</if>
-      <if test="bio != null">bio=#{bio}</if>
-    </set>
-  where id=#{id}
-</update>
-```
-
-#### sql片段
-
-![image-20210112202328124](https://github.com/kalao/Images/blob/master/spring基础.md/20210112202328124.png)
-
-#### foreach
-
-in (xx,xx,xx)
-
-```xml
-<select id="selectPostIn" resultType="domain.blog.Post">
-  SELECT *
-  FROM POST P
-  WHERE ID in
-  <foreach item="item" index="index" collection="list"
-      open="(" separator="," close=")">
-        #{item}
-  </foreach>
-</select>
-```
-
-in (xx or xx or xx)
-
-```xml
-<select id="selectPostIn" resultType="domain.blog.Post">
-  SELECT *
-  FROM POST P
-  WHERE ID in
-  <foreach item="item" index="index" collection="list"
-      open="(" separator="or" close=")">
-        #{item}
-  </foreach>
-</select>
-```
-
-### 十六、缓存
-
-#### 缓存
-
-![image-20210112203721141](https://github.com/kalao/Images/blob/master/spring基础.md/20210112203721141.png)
-
-#### mybatis缓存
-
-![image-20210112204702021](https://github.com/kalao/Images/blob/master/spring基础.md/20210112204702021.png)
-
-![image-20210112210512950](https://github.com/kalao/Images/blob/master/spring基础.md/20210112210512950.png)
-
-##### 一级缓存
-
-![image-20210112214532212](https://github.com/kalao/Images/blob/master/spring基础.md/20210112214532212.png)
-
-查看mybatis默认的缓存
-
-```java
-        SqlSession sqlSession = mybatisUtils.getSqlSession();
-        blogMapper mapper = sqlSession.getMapper(blogMapper.class);
-        for (comment comment : mapper.getComment()) {
-            System.out.println(comment);
-        }
-        for (comment comment : mapper.getComment()) {
-            System.out.println(comment);
-        }
-        sqlSession.close();
-```
-
-
-
-```
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Created connection 192881625.
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Returned connection 192881625 to pool.
-
-```
-
-##### 二级缓存
-
-![image-20210112214513948](https://github.com/kalao/Images/blob/master/spring基础.md/20210112214513948.png)
-
-MyBatis 内置了一个强大的事务性查询缓存机制，它可以非常方便地配置和定制。 为了使它更加强大而且易于配置，我们对 MyBatis 3 中的缓存实现进行了许多改进。
-
-默认情况下，只启用了本地的会话缓存，它仅仅对一个会话中的数据进行缓存。 要启用全局的二级缓存，只需要在你的 SQL 映射文件中添加一行：
-
-```
-<cache/>
-```
-
-![image-20210112215210255](https://github.com/kalao/Images/blob/master/spring基础.md/20210112215210255.png)
-
-基本上就是这样。这个简单语句的效果如下:
-
-- 映射语句文件中的所有 select 语句的结果将会被缓存。
-- 映射语句文件中的所有 insert、update 和 delete 语句会刷新缓存。
-
-- 缓存会使用最近最少使用算法（LRU, Least Recently Used）算法来清除不需要的缓存。
-- 缓存不会定时进行刷新（也就是说，没有刷新间隔）。
-- 缓存会保存列表或对象（无论查询方法返回哪种）的 1024 个引用。
-- 缓存会被视为读/写缓存，这意味着获取到的对象并不是共享的，可以安全地被调用者修改，而不干扰其他调用者或线程所做的潜在修改。  (猜测每个sqlsession独享,有待验证)
-
-这个更高级的配置创建了一个 FIFO 缓存，每隔 60 秒刷新，最多可以存储结果对象或列表的 512 个引用，而且返回的对象被认为是只读的，因此对它们进行修改可能会在不同线程中的调用者产生冲突。
-
-可用的清除策略有：
-
-- `LRU` – 最近最少使用：移除最长时间不被使用的对象。
-- `FIFO` – 先进先出：按对象进入缓存的顺序来移除它们。
-- `SOFT` – 软引用：基于垃圾回收器状态和软引用规则移除对象。
-- `WEAK` – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象。
-
-默认的清除策略是 LRU。
-
-flushInterval（刷新间隔）属性可以被设置为任意的正整数，设置的值应该是一个以毫秒为单位的合理时间量。 默认情况是不设置，也就是没有刷新间隔，缓存仅仅会在调用语句时刷新。
-
-size（引用数目）属性可以被设置为任意正整数，要注意欲缓存对象的大小和运行环境中可用的内存资源。默认值是 1024。
-
-readOnly（只读）属性可以被设置为 true 或 false。只读的缓存会给所有调用者返回缓存对象的相同实例。 因此这些对象不能被修改。这就提供了可观的性能提升。而可读写的缓存会（通过序列化）返回缓存对象的拷贝。 速度上会慢一些，但是更安全，因此默认值是 false。
-
-
-
-实验验证了 **映射语句文件中的所有 insert、update 和 delete 语句会刷新缓存**
-
-```java
-        SqlSession sqlSession = mybatisUtils.getSqlSession();
-        blogMapper mapper = sqlSession.getMapper(blogMapper.class);
-        for (comment comment : mapper.getComment()) {
-            System.out.println(comment);
-        }
-        mapper.updateComment(new comment(1,"-------",null));
-        for (comment comment : mapper.getComment()) {
-            System.out.println(comment);
-        }
-        sqlSession.close();
-```
-
-
-
-```
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Created connection 192881625.
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-[com.mybatis01.dao.blogMapper.updateComment]-==>  Preparing: update comment set content=? where id=? 
-[com.mybatis01.dao.blogMapper.updateComment]-==> Parameters: -------(String), 1(Integer)
-[com.mybatis01.dao.blogMapper.updateComment]-<==    Updates: 1
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=-------, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Rolling back JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Returned connection 192881625 to pool.
-
-```
-
-```
-        SqlSession sqlSession = mybatisUtils.getSqlSession();
-        blogMapper mapper = sqlSession.getMapper(blogMapper.class);
-        for (comment comment : mapper.getComment()) {
-            System.out.println(comment);
-        }
-        sqlSession.close();
-        sqlSession = mybatisUtils.getSqlSession();
-        mapper = sqlSession.getMapper(blogMapper.class);
-//        mapper.updateComment(new comment(1,"-------",null));
-        for (comment comment : mapper.getComment()) {
-            System.out.println(comment);
-        }
-        sqlSession.close();
-```
-
-未设置二级缓存
-
-```
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Created connection 192881625.
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Returned connection 192881625 to pool.
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Checked out connection 192881625 from pool.
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@b7f23d9]
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-```
-
-设置二级缓存(注意对象要实现Serializable接口)
-
-```
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Created connection 1931444790.
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@731f8236]
-[com.mybatis01.dao.blogMapper.getComment]-==>  Preparing: select * from comment 
-[com.mybatis01.dao.blogMapper.getComment]-==> Parameters: 
-[com.mybatis01.dao.blogMapper]-Cache Hit Ratio [com.mybatis01.dao.blogMapper]: 0.0
-[com.mybatis01.dao.blogMapper.getBlogs]-====>  Preparing: select * from blog where id=? 
-[com.mybatis01.dao.blogMapper.getBlogs]-====> Parameters: 1(Integer)
-[com.mybatis01.dao.blogMapper.getBlogs]-<====      Total: 1
-[com.mybatis01.dao.blogMapper.getComment]-<==      Total: 3
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@731f8236]
-[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@731f8236]
-[org.apache.ibatis.datasource.pooled.PooledDataSource]-Returned connection 1931444790 to pool.
-[com.mybatis01.dao.blogMapper]-Cache Hit Ratio [com.mybatis01.dao.blogMapper]: 0.3333333333333333
-comment(id=1, content=so good, blog=blog(id=1, title=starting))
-comment(id=2, content=agree you, blog=blog(id=1, title=starting))
-comment(id=3, content=up, blog=blog(id=1, title=starting))
-```
-
-
-
-![image-20210112220220434](https://github.com/kalao/Images/blob/master/spring基础.md/20210112220220434.png)
-
-![image-20210112223820984](https://github.com/kalao/Images/blob/master/spring基础.md/20210112223820984.png)
-
-
-
-# 日志
-
-## 一、log4j
-
-什么是log4j?
-
-- log4j是apache的一个开源项目,通过使用log4j,我们可以控制日志信息输送的目的地是控制台,文件,GUI组件
-- 我们可以控制每一条日志的输出格式;
-- 通过定义每一条日志信息的级别,我们能够更加细致地控制日志的生成过程.
-- 通过一个配置文件来灵活地进行配置,而不需要修改应用的代码
-
-导包
-
-![image-20210111194737875](https://github.com/kalao/Images/blob/master/spring基础.md/20210111194737875.png)
-
-
-
-<img src="https://github.com/kalao/Images/blob/master/spring基础.md/20210111193940703.png" alt="image-20210111193940703" style="zoom:80%;" />
-
-```
-log4j.rootLogger=DEBUG,CONSOLE,logfile
-
-# 配置CONSOLE输出到控制台
-log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
-log4j.appender.CONSOLE.Target=System.out
-# 配置CONSOLE设置为自定义布局模式
-log4j.appender.CONSOLE.Threshold=DEBUG
-log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout 
-log4j.appender.CONSOLE.layout.ConversionPattern=[%c]-%m%n
-
-################
-# 输出到日志文件中
-################
-
-# 配置logfile输出到文件中 文件大小到达指定尺寸的时候产生新的日志文件
-log4j.appender.logfile=org.apache.log4j.RollingFileAppender
-# 保存编码格式
-log4j.appender.logfile.Encoding=UTF-8
-# 输出文件位置此为项目根目录下的logs文件夹中
-log4j.appender.logfile.File=./log/root.log
-# 后缀可以是KB,MB,GB达到该大小后创建新的日志文件
-log4j.appender.logfile.MaxFileSize=10MB
-# 设置滚定文件的最大值3 指可以产生root.log.1、root.log.2、root.log.3和root.log四个日志文件
-log4j.appender.logfile.MaxBackupIndex=3  
-# 配置logfile为自定义布局模式
-log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
-log4j.appender.logfile.layout.ConversionPattern=[%p][%d{yyyy-MM-dd HH:mm:ss}][%c] %m%n
-
-log4j.logger.org.mybatis=DEBUG
-log4j.logger.java.sql=DEBUG
-log4j.logger.java.sql.Statement=DEBUG
-log4j.logger.java.sql.ResultSet=DEBUG
-log4j.logger.java.sql.PreparedStatement=DEBUG
-```
-
-# lombok插件
-
-导入依赖
-
-```xml
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.10</version>
-</dependency>
-```
-
-![image-20210112124311934](https://github.com/kalao/Images/blob/master/spring基础.md/20210112124311934.png)
-
-
-
-# 注解Annotation
-
-> 是从JDK5.0开始引入的新技术
-
-注解的作用:
-
-1. 不是程序本身,可以对程序作出解释
-2. 可以被其他程序读取
-
-作用对象:
-
-- 在package,class,method,field上面,相当于给他们添加了
-
-  额外的辅助信息,我们可以通过反射机制实现对这些元数据的访问.
-
-示例:
-
-@Override 重写的注解
-
-@Deprecated 不推荐使用
-
-@SuppressWarnings("")抑制警告
-
-元注解:
-
-> 元注解的作用是负责注解其他注解
-
-@Target :表示我们的注解可以放在哪些地方
-
-@Retention 表示我们的注解在什么地方(时候)有效
-
-```
-@Retention(value=RetentionPolicy.RUNTIME)
-```
-
-runtime>class>sources
-
-@Documented 表示是否将我们的注解生成在JAVAdoc中
-
-@Inherited:说明子类可以继承父类中的该注解
-
-自定义注解
-
-> 使用@interface自定义注解时,自动继承了java.lang.annotation.Annotation接口
-
-![image-20210113165509210](https://github.com/kalao/Images/blob/master/spring基础.md/20210113165509210.png)
-
-在自定义注解的时候,注解的参数是类似于函数形式,名称就是参数的名称,参数的返回值只能是基本类型,class,String,enum,参数必须要有值,一般会给默认的值(default关键词来付给参数默认值)
-
-```java
-@Target(ElementType.METHOD)
-@interface myano{
-    String school() default "清华大学";
-}
-
-@myano(school="武汉理工大学")
-```
-
-# 反射
-
-### 动态语言
-
-> 可以根据某些条件改变自身结构,python,js,php都是动态语言
->
-> 举个例子,比如在js中一串文本,js可以将其执行.就是类型可以变换,不仅仅是强制类型转换这种,很随意的.(个人理解)
-
-### 静态语言
-
-> 运行时候结构不变.java不是动态语言,但java可以通过反射机制获得类似动态语言的特性
-
-> 反射是java被视为动态语言的关键,反射机制允许程序在执行期间借助reflection API取得任何类的内部信息,并能操作任意对象的内部属性以及方法.
-
-```java
-Class c=Class.forName("java.lang.String")
-```
-
-> 加载完类之后,在堆内存的方法区就产生了一个Class类型的对象(一个类只有一个Class对象),这个对象就包含了完整的类的结构信息.我们可以通过这个对象看到类的结构.这个对象就像一面镜子,通过这个镜子看到类的结构,所以我们形象称之为:反射.
-
-![image-20210113191612842](https://github.com/kalao/Images/blob/master/spring基础.md/20210113191612842.png)
-
-### Java反射机制提供的功能
-
-![image-20210113192105149](https://github.com/kalao/Images/blob/master/spring基础.md/20210113192105149.png)
-
-Java反射优点和缺点
-
-![image-20210113192358954](https://github.com/kalao/Images/blob/master/spring基础.md/20210113192358954.png)
-
-
-
-Java反射的API
-
-![image-20210113192510784](https://github.com/kalao/Images/blob/master/spring基础.md/20210113192510784.png)
-
-### Class类
-
-```java
-Class  c = Class.forName("com.mybatis01.pojo.user");
-```
-
-> 这里反射个人理解是从对象反向映射对应的类
-
-![image-20210113194225186](https://github.com/kalao/Images/blob/master/spring基础.md/20210113194225186.png)
-
-![image-20210113194635518](https://github.com/kalao/Images/blob/master/spring基础.md/20210113194635518.png)
-
-#### class类常用方法
-
-![image-20210113194745744](https://github.com/kalao/Images/blob/master/spring基础.md/20210113194745744.png)
-
-#### 获取Class类的实例
-
-![image-20210113194824761](https://github.com/kalao/Images/blob/master/spring基础.md/20210113194824761.png)
-
-哪些对象有Class对象
-
-![image-20210113200030006](https://github.com/kalao/Images/blob/master/spring基础.md/20210113200030006.png)
-
-#### 类的加载过程
-
-![image-20210113203532124](https://github.com/kalao/Images/blob/master/spring基础.md/20210113203532124.png)
-
-![image-20210113211151989](https://github.com/kalao/Images/blob/master/spring基础.md/20210113211151989.png)
-
-![image-20210113213150611](https://github.com/kalao/Images/blob/master/spring基础.md/20210113213150611.png)
-
-![image-20210113210822799](https://github.com/kalao/Images/blob/master/spring基础.md/20210113210822799.png)
-
-
-
-![image-20210113211010625](https://github.com/kalao/Images/blob/master/spring基础.md/20210113211010625.png)
-
-初始化是按照定义的顺序来
-
-![image-20210113210431304](https://github.com/kalao/Images/blob/master/spring基础.md/20210113210431304.png)
-
-
-
-
-
-![image-20210113212413315](https://github.com/kalao/Images/blob/master/spring基础.md/20210113212413315.png)
-
- 
+在加了事务处理,要么都成功,要么只要一方失败,都会失败

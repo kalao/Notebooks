@@ -36,3 +36,31 @@
 1. 没有处理中断的情况如何将任务持久化
 2. 没有封装任务
 
+
+
+
+
+```
+public static final String
+        NOTEBOOK_FILE_PATH
+        ="这是你的笔记本地仓库";
+public static final String
+        IMAGE_LOCAL_PATH=
+        "这是你的图库";
+public static final String
+        PRO_PATH
+        =Thread.currentThread().getContextClassLoader().getResource("").getPath();
+public static final String
+        SUFFIX="com/Typora/";
+        
+public static final String
+        GIT_PREFIX="这是你图库的前缀";
+public static final String
+        BASH_PUSH="my.sh";
+public static final String
+        BASH_UPDATE="update.sh";
+public static final String
+        LOCAL_PRO_COPY="这是本地笔记仓库的副本";
+public static final String
+        BASH_LOCAL_COPY="localmy.sh";
+```
