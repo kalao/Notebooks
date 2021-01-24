@@ -40,11 +40,11 @@ https://docs.spring.io/spring-framework/docs/3.0.x/javadoc-api/org/springframewo
 
 ### 1.3 组成
 
-![image-20210115200434148](/home/kalao/.config/Typora/typora-user-images/image-20210115200434148.png)
+![image-20210115200434148](https://github.com/kalao/Images/blob/master/spring基础.md/20210115200434148.png)
 
 ### 1.4 扩展
 
-![image-20210115200615489](/home/kalao/.config/Typora/typora-user-images/image-20210115200615489.png)
+![image-20210115200615489](https://github.com/kalao/Images/blob/master/spring基础.md/20210115200615489.png)
 
 - springboot
   - 一个快速开发的脚手架
@@ -72,9 +72,9 @@ https://docs.spring.io/spring-framework/docs/3.0.x/javadoc-api/org/springframewo
 
 - 这种思想,从本质上解决了问题,我们程序员不用在去管理对象的创建了.系统的耦合性大大降低.
 
-![image-20210115213343916](/home/kalao/.config/Typora/typora-user-images/image-20210115213343916.png)
+![image-20210115213343916](https://github.com/kalao/Images/blob/master/spring基础.md/20210115213343916.png)
 
-![image-20210115213649173](/home/kalao/.config/Typora/typora-user-images/image-20210115213649173.png)
+![image-20210115213649173](https://github.com/kalao/Images/blob/master/spring基础.md/20210115213649173.png)
 
 
 
@@ -112,7 +112,7 @@ https://docs.spring.io/spring-framework/docs/3.0.x/javadoc-api/org/springframewo
 
 我们可以在xml文件中替换userDao的实现
 
-![image-20210115223228881](/home/kalao/.config/Typora/typora-user-images/image-20210115223228881.png)
+![image-20210115223228881](https://github.com/kalao/Images/blob/master/spring基础.md/20210115223228881.png)
 
 
 
@@ -382,7 +382,7 @@ public class user {
 
 #### 1. 在spring4以后,要使用注解开发,必须保证aop的包导入了
 
-![image-20210119142814764](/home/kalao/.config/Typora/typora-user-images/image-20210119142814764.png)
+![image-20210119142814764](https://github.com/kalao/Images/blob/master/spring基础.md/20210119142814764.png)
 
 ```xml
 <dependency>
@@ -451,7 +451,7 @@ public class category {
 
 #### 3.8 使用java的方式配置spring
 
-![image-20210119175033066](/home/kalao/.config/Typora/typora-user-images/image-20210119175033066.png)
+![image-20210119175033066](https://github.com/kalao/Images/blob/master/spring基础.md/20210119175033066.png)
 
 
 
@@ -510,7 +510,7 @@ xml更加万能,适用任何场合.
 
 
 
-![image-20210120161156924](/home/kalao/.config/Typora/typora-user-images/image-20210120161156924.png)
+![image-20210120161156924](https://github.com/kalao/Images/blob/master/spring基础.md/20210120161156924.png)
 
 > 个人感觉,代理是种强化后的角色
 >
@@ -536,7 +536,7 @@ xml更加万能,适用任何场合.
 
 
 
-![image-20210120183922373](/home/kalao/.config/Typora/typora-user-images/image-20210120183922373.png)
+![image-20210120183922373](https://github.com/kalao/Images/blob/master/spring基础.md/20210120183922373.png)
 
 
 
@@ -581,7 +581,7 @@ public class userDaoProxy implements userDao {
 
 > 动态代理是动态生成的,动态代理分为两类,一类基于接口_(JDK动态代理),一种基于类_(cglib),还有基于java字节码_(javasisit)
 
-![image-20210120192647475](/home/kalao/.config/Typora/typora-user-images/image-20210120192647475.png)
+![image-20210120192647475](https://github.com/kalao/Images/blob/master/spring基础.md/20210120192647475.png)
 
 
 
@@ -614,15 +614,15 @@ public class ProxyInvocationHandler implements InvocationHandler {
 
 
 
-![image-20210120205009450](/home/kalao/.config/Typora/typora-user-images/image-20210120205009450.png)
+![image-20210120205009450](https://github.com/kalao/Images/blob/master/spring基础.md/20210120205009450.png)
 
 
 
-![image-20210120205133779](/home/kalao/.config/Typora/typora-user-images/image-20210120205133779.png)
+![image-20210120205133779](https://github.com/kalao/Images/blob/master/spring基础.md/20210120205133779.png)
 
 
 
-![image-20210120205518096](/home/kalao/.config/Typora/typora-user-images/image-20210120205518096.png)
+![image-20210120205518096](https://github.com/kalao/Images/blob/master/spring基础.md/20210120205518096.png)
 
 ## 5.2 spring接口实现
 
@@ -630,7 +630,7 @@ public class ProxyInvocationHandler implements InvocationHandler {
 
 在org.springframework.aop下的一堆接口
 
-![image-20210120210302544](/home/kalao/.config/Typora/typora-user-images/image-20210120210302544.png)
+![image-20210120210302544](https://github.com/kalao/Images/blob/master/spring基础.md/20210120210302544.png)
 
 需要引入依赖
 
@@ -646,7 +646,7 @@ public class ProxyInvocationHandler implements InvocationHandler {
 
 > 用于前置通知
 
-![image-20210120214246123](/home/kalao/.config/Typora/typora-user-images/image-20210120214246123.png)
+![image-20210120214246123](https://github.com/kalao/Images/blob/master/spring基础.md/20210120214246123.png)
 
 ```java
 @Component
@@ -1021,9 +1021,9 @@ user(id=5, name=5)
 
 - 编程式  在代码里面显式的写异常处理,然后进行回滚
 
-![image-20210121173329966](/home/kalao/.config/Typora/typora-user-images/image-20210121173329966.png)
+![image-20210121173329966](https://github.com/kalao/Images/blob/master/spring基础.md/20210121173329966.png)
 
-![image-20210121173533570](/home/kalao/.config/Typora/typora-user-images/image-20210121173533570.png)
+![image-20210121173533570](https://github.com/kalao/Images/blob/master/spring基础.md/20210121173533570.png)
 
 
 
