@@ -26,7 +26,7 @@ web保存着信息,这些信息都保存在世界的某一台主机上.
 
 而对应于动态资源,我们需要一个将数据整合至静态资源的过程,这是一个动态生成的过程.
 
-![image-20210124213111553](/home/kalao/.config/Typora/typora-user-images/image-20210124213111553.png)
+![image-20210124213111553](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124213111553.png)
 
 这个过程有些缺点,比如出现问题,就需要停机维护;但是优点是可以动态生成页面.
 
