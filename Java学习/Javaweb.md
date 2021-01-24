@@ -117,9 +117,14 @@ Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
 ![image-20210124231257017](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231257017.png)
 
+#### 1.5.3.2 消息头
 
+![image-20210124231559773](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231559773.png)
 
 ### 1.5.4 响应 
 
 ![image-20210124230800748](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230800748.png)
 
+#### 1.5.4.1 响应体
+
+![image-20210124231948914](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231948914.png)
