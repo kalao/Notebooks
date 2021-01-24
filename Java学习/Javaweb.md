@@ -106,4 +106,20 @@ Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 ### 1.5.2 HTTPS
 
 1. 安全的
-2. 
+
+### 1.5.3 请求
+
+> 请求分为请求头和消息,消息分为消息头和消息
+
+![image-20210124230921406](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230921406.png)
+
+#### 1.5.3.1 请求行
+
+![image-20210124231257017](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231257017.png)
+
+
+
+### 1.5.4 响应 
+
+![image-20210124230800748](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230800748.png)
+
