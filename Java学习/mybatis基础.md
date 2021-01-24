@@ -259,7 +259,7 @@ MORE DETAILS:https://mybatis.org/mybatis-3/zh/configuration.html#environments
 
 1. 在java文件夹下的xml文件无法find,需要对java里的文件进行过滤,将其作为resources的一部分来源.
 
-![image-20210110163749664](/home/kalao/.config/Typora/typora-user-images/image-20210110163749664.png)
+![image-20210110163749664](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210110163749664.png)
 
 ### 五、[类别别名](https://mybatis.org/mybatis-3/zh/configuration.html#typeAliases)
 
@@ -338,7 +338,7 @@ public class user {
 
 
 
-![image-20210111104525952](/home/kalao/.config/Typora/typora-user-images/image-20210111104525952.png)
+![image-20210111104525952](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111104525952.png)
 
 1. 对于上面第三种方式和第四种,可能会遇到一些问题
    - ​	主要有类和xml不在一个包内
@@ -346,9 +346,9 @@ public class user {
 
 ### 九 、生命周期和作用域
 
-![image-20210111110539872](/home/kalao/.config/Typora/typora-user-images/image-20210111110539872.png)
+![image-20210111110539872](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111110539872.png)
 
-![image-20210111111148142](/home/kalao/.config/Typora/typora-user-images/image-20210111111148142.png)
+![image-20210111111148142](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111111148142.png)
 
 mapper对应一个业务(实现类)
 
@@ -403,17 +403,17 @@ public List<user> getUserList();
 
 ### 十三、 执行过程
 
-![image-20210111221443343](/home/kalao/.config/Typora/typora-user-images/image-20210111221443343.png)
+![image-20210111221443343](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111221443343.png)
 
-![image-20210111221531389](/home/kalao/.config/Typora/typora-user-images/image-20210111221531389.png)
-
-
-
-![image-20210111221549476](/home/kalao/.config/Typora/typora-user-images/image-20210111221549476.png)
+![image-20210111221531389](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111221531389.png)
 
 
 
-![image-20210111221648880](/home/kalao/.config/Typora/typora-user-images/image-20210111221648880.png)
+![image-20210111221549476](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111221549476.png)
+
+
+
+![image-20210111221648880](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111221648880.png)
 
 
 
@@ -423,11 +423,11 @@ public List<user> getUserList();
 
 - comment评论
 
-![image-20210112164533328](/home/kalao/.config/Typora/typora-user-images/image-20210112164533328.png)
+![image-20210112164533328](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112164533328.png)
 
 - blog博客
 
-![image-20210112164812845](/home/kalao/.config/Typora/typora-user-images/image-20210112164812845.png)
+![image-20210112164812845](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112164812845.png)
 
 
 
@@ -529,12 +529,12 @@ comment(id=3, content=up, blog=blog(id=1, title=starting))
 - comment评论
 
 
-![image-20210112164533328](/home/kalao/.config/Typora/typora-user-images/image-20210112164533328.png)
+![image-20210112164533328](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112164533328.png)
 
 - blog博客
 
 
-![image-20210112164812845](/home/kalao/.config/Typora/typora-user-images/image-20210112164812845.png)
+![image-20210112164812845](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112164812845.png)
 
 ```java
 @NoArgsConstructor
@@ -595,13 +595,13 @@ mybatis子查询方式:
 
 和下图类似略
 
-![image-20210112184947578](/home/kalao/.config/Typora/typora-user-images/image-20210112184947578.png)
+![image-20210112184947578](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112184947578.png)
 
 
 
 ### 十五、动态SQL
 
-![image-20210112192114991](/home/kalao/.config/Typora/typora-user-images/image-20210112192114991.png)
+![image-20210112192114991](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112192114991.png)
 
 
 
@@ -758,7 +758,7 @@ for(comment comment :mapper.getComments(map)){
 
 #### sql片段
 
-![image-20210112202328124](/home/kalao/.config/Typora/typora-user-images/image-20210112202328124.png)
+![image-20210112202328124](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112202328124.png)
 
 #### foreach
 
@@ -794,17 +794,17 @@ in (xx or xx or xx)
 
 #### 缓存
 
-![image-20210112203721141](/home/kalao/.config/Typora/typora-user-images/image-20210112203721141.png)
+![image-20210112203721141](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112203721141.png)
 
 #### mybatis缓存
 
-![image-20210112204702021](/home/kalao/.config/Typora/typora-user-images/image-20210112204702021.png)
+![image-20210112204702021](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112204702021.png)
 
-![image-20210112210512950](/home/kalao/.config/Typora/typora-user-images/image-20210112210512950.png)
+![image-20210112210512950](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112210512950.png)
 
 ##### 一级缓存
 
-![image-20210112214532212](/home/kalao/.config/Typora/typora-user-images/image-20210112214532212.png)
+![image-20210112214532212](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112214532212.png)
 
 查看mybatis默认的缓存
 
@@ -846,7 +846,7 @@ comment(id=3, content=up, blog=blog(id=1, title=starting))
 
 ##### 二级缓存
 
-![image-20210112214513948](/home/kalao/.config/Typora/typora-user-images/image-20210112214513948.png)
+![image-20210112214513948](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112214513948.png)
 
 MyBatis 内置了一个强大的事务性查询缓存机制，它可以非常方便地配置和定制。 为了使它更加强大而且易于配置，我们对 MyBatis 3 中的缓存实现进行了许多改进。
 
@@ -856,7 +856,7 @@ MyBatis 内置了一个强大的事务性查询缓存机制，它可以非常方
 <cache/>
 ```
 
-![image-20210112215210255](/home/kalao/.config/Typora/typora-user-images/image-20210112215210255.png)
+![image-20210112215210255](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112215210255.png)
 
 基本上就是这样。这个简单语句的效果如下:
 
@@ -1011,9 +1011,9 @@ comment(id=3, content=up, blog=blog(id=1, title=starting))
 
 
 
-![image-20210112220220434](/home/kalao/.config/Typora/typora-user-images/image-20210112220220434.png)
+![image-20210112220220434](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112220220434.png)
 
-![image-20210112223820984](/home/kalao/.config/Typora/typora-user-images/image-20210112223820984.png)
+![image-20210112223820984](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112223820984.png)
 
 
 
@@ -1030,11 +1030,11 @@ comment(id=3, content=up, blog=blog(id=1, title=starting))
 
 导包
 
-![image-20210111194737875](/home/kalao/.config/Typora/typora-user-images/image-20210111194737875.png)
+![image-20210111194737875](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111194737875.png)
 
 
 
-<img src="/home/kalao/.config/Typora/typora-user-images/image-20210111193940703.png" alt="image-20210111193940703" style="zoom:80%;" />
+<img src="https://github.com/kalao/Images/blob/master/mybatis基础.md/20210111193940703.png" alt="image-20210111193940703" style="zoom:80%;" />
 
 ```
 log4j.rootLogger=DEBUG,CONSOLE,logfile
@@ -1084,7 +1084,7 @@ log4j.logger.java.sql.PreparedStatement=DEBUG
 </dependency>
 ```
 
-![image-20210112124311934](/home/kalao/.config/Typora/typora-user-images/image-20210112124311934.png)
+![image-20210112124311934](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210112124311934.png)
 
 
 
@@ -1133,7 +1133,7 @@ runtime>class>sources
 
 > 使用@interface自定义注解时,自动继承了java.lang.annotation.Annotation接口
 
-![image-20210113165509210](/home/kalao/.config/Typora/typora-user-images/image-20210113165509210.png)
+![image-20210113165509210](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113165509210.png)
 
 在自定义注解的时候,注解的参数是类似于函数形式,名称就是参数的名称,参数的返回值只能是基本类型,class,String,enum,参数必须要有值,一般会给默认的值(default关键词来付给参数默认值)
 
@@ -1166,21 +1166,21 @@ Class c=Class.forName("java.lang.String")
 
 > 加载完类之后,在堆内存的方法区就产生了一个Class类型的对象(一个类只有一个Class对象),这个对象就包含了完整的类的结构信息.我们可以通过这个对象看到类的结构.这个对象就像一面镜子,通过这个镜子看到类的结构,所以我们形象称之为:反射.
 
-![image-20210113191612842](/home/kalao/.config/Typora/typora-user-images/image-20210113191612842.png)
+![image-20210113191612842](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113191612842.png)
 
 ### Java反射机制提供的功能
 
-![image-20210113192105149](/home/kalao/.config/Typora/typora-user-images/image-20210113192105149.png)
+![image-20210113192105149](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113192105149.png)
 
 ##### Java反射优点和缺点
 
-![image-20210113192358954](/home/kalao/.config/Typora/typora-user-images/image-20210113192358954.png)
+![image-20210113192358954](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113192358954.png)
 
 
 
 ##### Java反射的API
 
-![image-20210113192510784](/home/kalao/.config/Typora/typora-user-images/image-20210113192510784.png)
+![image-20210113192510784](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113192510784.png)
 
 ### Class类
 
@@ -1190,45 +1190,45 @@ Class  c = Class.forName("com.mybatis01.pojo.user");
 
 > 这里反射个人理解是从对象反向映射对应的类
 
-![image-20210113194225186](/home/kalao/.config/Typora/typora-user-images/image-20210113194225186.png)
+![image-20210113194225186](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113194225186.png)
 
-![image-20210113194635518](/home/kalao/.config/Typora/typora-user-images/image-20210113194635518.png)
+![image-20210113194635518](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113194635518.png)
 
 #### class类常用方法
 
-![image-20210113194745744](/home/kalao/.config/Typora/typora-user-images/image-20210113194745744.png)
+![image-20210113194745744](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113194745744.png)
 
 #### 获取Class类的实例
 
-![image-20210113194824761](/home/kalao/.config/Typora/typora-user-images/image-20210113194824761.png)
+![image-20210113194824761](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113194824761.png)
 
 #### 哪些对象有Class对象
 
-![image-20210113200030006](/home/kalao/.config/Typora/typora-user-images/image-20210113200030006.png)
+![image-20210113200030006](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113200030006.png)
 
 #### 类的加载过程
 
-![image-20210113203532124](/home/kalao/.config/Typora/typora-user-images/image-20210113203532124.png)
+![image-20210113203532124](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113203532124.png)
 
-![image-20210113211151989](/home/kalao/.config/Typora/typora-user-images/image-20210113211151989.png)
+![image-20210113211151989](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113211151989.png)
 
-![image-20210113213150611](/home/kalao/.config/Typora/typora-user-images/image-20210113213150611.png)
+![image-20210113213150611](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113213150611.png)
 
-![image-20210113210822799](/home/kalao/.config/Typora/typora-user-images/image-20210113210822799.png)
+![image-20210113210822799](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113210822799.png)
 
 
 
-![image-20210113211010625](/home/kalao/.config/Typora/typora-user-images/image-20210113211010625.png)
+![image-20210113211010625](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113211010625.png)
 
 初始化是按照定义的顺序来
 
-![image-20210113210431304](/home/kalao/.config/Typora/typora-user-images/image-20210113210431304.png)
+![image-20210113210431304](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113210431304.png)
 
 
 
 
 
-![image-20210113212413315](/home/kalao/.config/Typora/typora-user-images/image-20210113212413315.png)
+![image-20210113212413315](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210113212413315.png)
 
  
 
@@ -1236,32 +1236,32 @@ Class  c = Class.forName("com.mybatis01.pojo.user");
 
 class方法示例:
 
-![image-20210114104719550](/home/kalao/.config/Typora/typora-user-images/image-20210114104719550.png)
+![image-20210114104719550](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114104719550.png)
 
-![image-20210114104800994](/home/kalao/.config/Typora/typora-user-images/image-20210114104800994.png)
+![image-20210114104800994](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114104800994.png)
 
-![image-20210114110614768](/home/kalao/.config/Typora/typora-user-images/image-20210114110614768.png)
+![image-20210114110614768](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114110614768.png)
 
-![image-20210114111424705](/home/kalao/.config/Typora/typora-user-images/image-20210114111424705.png)
+![image-20210114111424705](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114111424705.png)
 
-![image-20210114111746072](/home/kalao/.config/Typora/typora-user-images/image-20210114111746072.png)
+![image-20210114111746072](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114111746072.png)
 
 #### 反射调用指定的方法
 
-![image-20210114111826580](/home/kalao/.config/Typora/typora-user-images/image-20210114111826580.png)
+![image-20210114111826580](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114111826580.png)
 
-![image-20210114111913420](/home/kalao/.config/Typora/typora-user-images/image-20210114111913420.png)
+![image-20210114111913420](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114111913420.png)
 
 #### 反射获得泛型信息
 
-![image-20210114112353123](/home/kalao/.config/Typora/typora-user-images/image-20210114112353123.png)
+![image-20210114112353123](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114112353123.png)
 
-![image-20210114112718041](/home/kalao/.config/Typora/typora-user-images/image-20210114112718041.png)
+![image-20210114112718041](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114112718041.png)
 
 
 
 #### 反射获得注解
 
-![image-20210114131429549](/home/kalao/.config/Typora/typora-user-images/image-20210114131429549.png)
+![image-20210114131429549](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114131429549.png)
 
-![image-20210114131704889](/home/kalao/.config/Typora/typora-user-images/image-20210114131704889.png)
+![image-20210114131704889](https://github.com/kalao/Images/blob/master/mybatis基础.md/20210114131704889.png)
