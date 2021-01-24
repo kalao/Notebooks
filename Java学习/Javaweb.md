@@ -44,5 +44,20 @@ JSP/Servlet
 
 ## 1.4 web 服务器
 
+IIS: 微软的 
 
+Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
+## 1.5 Tomcat
+
+1. conf/server.xml
+   1. 配置端口 Connector标签下port属性
+   2. 配置主机名 Host标签
+
+端口:
+
+tomcat:8080
+
+http:80
+
+https:443
