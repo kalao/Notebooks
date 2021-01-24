@@ -30,6 +30,14 @@ web保存着信息,这些信息都保存在世界的某一台主机上.
 
 这个过程有些缺点,比如出现问题,就需要停机维护;但是优点是可以动态生成页面.
 
+> 如何访问一个网站?
+
+1. 首先获得域名
+
+2. 去查看hosts配置文件,有没有对应的域名映射,如果有就找到对应IP,如果没有就去DNS服务器找
+
+   
+
 ## 1.3 相关的技术
 
 PHP
@@ -48,16 +56,38 @@ IIS: 微软的
 
 Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
-## 1.5 Tomcat
+### 1.4.1 Tomcat
 
 1. conf/server.xml
-   1. 配置端口 Connector标签下port属性
-   2. 配置主机名 Host标签
 
-端口:
+   1. 配置端口 Connector标签下port属性,注意默认8080,https默认443
+   2. 配置主机名 Host标签下的name名称
 
-tomcat:8080
+2. 发布一个服务
 
-http:80
+   1. 放在Tomcat指定的web应用的文件夹(webapps)下
 
-https:443
+      > --webapps
+      >
+      > ​	-kalao 网站的目录名
+      >
+      > ​           -WEB-INF
+      >
+      > ​                 -classes :java程序
+      >
+      > ​				-lib:j依赖
+      >
+      > ​                -web.xml 网站配置
+      >
+      >  		 -index.html 默认主页      
+      >
+      > ​          -static 
+      >
+      > ​				-css
+      >
+      > ​				-js
+      >
+      > ​				-img             
+
+
+
