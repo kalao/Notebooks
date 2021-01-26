@@ -28,7 +28,7 @@ web保存着信息,这些信息都保存在世界的某一台主机上.
 
 而对应于动态资源,我们需要一个将数据整合至静态资源的过程,这是一个动态生成的过程.
 
-![image-20210124213111553](/home/kalao/.config/Typora/typora-user-images/image-20210124213111553.png)
+![image-20210124213111553](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124213111553.png)
 
 这个过程有些缺点,比如出现问题,就需要停机维护;但是优点是可以动态生成页面.
 
@@ -103,19 +103,19 @@ Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
 > 请求分为请求头和消息,消息分为消息头和消息
 
-![image-20210124230921406](/home/kalao/.config/Typora/typora-user-images/image-20210124230921406.png)
+![image-20210124230921406](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230921406.png)
 
 #### 1.4.3.1 请求行
 
-![image-20210124231257017](/home/kalao/.config/Typora/typora-user-images/image-20210124231257017.png)
+![image-20210124231257017](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231257017.png)
 
 #### 1.4.3.2 消息头
 
-![image-20210124231559773](/home/kalao/.config/Typora/typora-user-images/image-20210124231559773.png)
+![image-20210124231559773](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231559773.png)
 
 ### 1.4.4 响应 
 
-![image-20210124230800748](/home/kalao/.config/Typora/typora-user-images/image-20210124230800748.png)
+![image-20210124230800748](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230800748.png)
 
 #### 1.4.4.1 响应状态码
 
@@ -131,7 +131,7 @@ Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
 #### 1.4.4.2 响应体
 
-![image-20210124231948914](/home/kalao/.config/Typora/typora-user-images/image-20210124231948914.png)
+![image-20210124231948914](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231948914.png)
 
 
 
@@ -154,25 +154,25 @@ maven
 - 管理依赖
 - 约定大于配置
 
-![image-20210125093240106](/home/kalao/.config/Typora/typora-user-images/image-20210125093240106.png)
+![image-20210125093240106](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125093240106.png)
 
-![image-20210125094100024](/home/kalao/.config/Typora/typora-user-images/image-20210125094100024.png)
+![image-20210125094100024](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125094100024.png)
 
-![image-20210125094627244](/home/kalao/.config/Typora/typora-user-images/image-20210125094627244.png)
+![image-20210125094627244](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125094627244.png)
 
-![image-20210125094907956](/home/kalao/.config/Typora/typora-user-images/image-20210125094907956.png)
+![image-20210125094907956](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125094907956.png)
 
 全局配置
 
-![image-20210125100736122](/home/kalao/.config/Typora/typora-user-images/image-20210125100736122.png)
+![image-20210125100736122](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125100736122.png)
 
 
 
 ## 1.6 Servlet
 
-## ![image-20210125102104908](/home/kalao/.config/Typora/typora-user-images/image-20210125102104908.png)
+## ![image-20210125102104908](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125102104908.png)
 
-![image-20210125110643665](/home/kalao/.config/Typora/typora-user-images/image-20210125110643665.png)
+![image-20210125110643665](https://github.com/kalao/Images/blob/master/Javaweb.md/20210125110643665.png)
 
 
 
