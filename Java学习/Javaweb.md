@@ -1,3 +1,5 @@
+
+
 # 1 . Java web
 
 ## 1.1 信息,服务,应用程序
@@ -26,7 +28,7 @@ web保存着信息,这些信息都保存在世界的某一台主机上.
 
 而对应于动态资源,我们需要一个将数据整合至静态资源的过程,这是一个动态生成的过程.
 
-![image-20210124213111553](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124213111553.png)
+![image-20210124213111553](/home/kalao/.config/Typora/typora-user-images/image-20210124213111553.png)
 
 这个过程有些缺点,比如出现问题,就需要停机维护;但是优点是可以动态生成页面.
 
@@ -38,25 +40,13 @@ web保存着信息,这些信息都保存在世界的某一台主机上.
 
    
 
-## 1.3 相关的技术
-
-PHP
-
-- PHP开发速度快,功能很强大,跨平台
-- 无法承载大访问量
-
-JSP/Servlet
-
-- 基于B/S,基于Java语言
-- 可以承载三高问题(高并发,高性能,高可用)
-
-## 1.4 web 服务器
+## 1.3 web 服务器
 
 IIS: 微软的 
 
 Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
-### 1.4.1 Tomcat
+### 1.3.1 Tomcat
 
 1. conf/server.xml
 
@@ -91,9 +81,11 @@ Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
 
 
-## 1.5协议
 
-### 1.5.1 HTTP
+
+## 1.4协议
+
+### 1.4.1 HTTP
 
 超文本传输协议,基于TCP的简单请求-响应协议.
 
@@ -103,28 +95,84 @@ Tomcat:开源,轻量, Tomcat实际上运行JSP和Servlet
 
 > 连接之后http1.0只能获得一个资源,而http2.0可以获得多个.
 
-### 1.5.2 HTTPS
+### 1.4.2 HTTPS
 
 1. 安全的
 
-### 1.5.3 请求
+### 1.4.3 请求
 
 > 请求分为请求头和消息,消息分为消息头和消息
 
-![image-20210124230921406](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230921406.png)
+![image-20210124230921406](/home/kalao/.config/Typora/typora-user-images/image-20210124230921406.png)
 
-#### 1.5.3.1 请求行
+#### 1.4.3.1 请求行
 
-![image-20210124231257017](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231257017.png)
+![image-20210124231257017](/home/kalao/.config/Typora/typora-user-images/image-20210124231257017.png)
 
-#### 1.5.3.2 消息头
+#### 1.4.3.2 消息头
 
-![image-20210124231559773](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231559773.png)
+![image-20210124231559773](/home/kalao/.config/Typora/typora-user-images/image-20210124231559773.png)
 
-### 1.5.4 响应 
+### 1.4.4 响应 
 
-![image-20210124230800748](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124230800748.png)
+![image-20210124230800748](/home/kalao/.config/Typora/typora-user-images/image-20210124230800748.png)
 
-#### 1.5.4.1 响应体
+#### 1.4.4.1 响应状态码
 
-![image-20210124231948914](https://github.com/kalao/Images/blob/master/Javaweb.md/20210124231948914.png)
+| 200  | 请求OK                 |      |
+| ---- | ---------------------- | ---- |
+| 3xx  | 请求重定向             |      |
+| 4xx  | 找不到资源             |      |
+| 5xx  | 服务器错误 502网关错误 |      |
+
+
+
+
+
+#### 1.4.4.2 响应体
+
+![image-20210124231948914](/home/kalao/.config/Typora/typora-user-images/image-20210124231948914.png)
+
+
+
+
+
+## 1.5 相关的技术
+
+PHP
+
+- PHP开发速度快,功能很强大,跨平台
+- 无法承载大访问量
+
+JSP/Servlet
+
+- 基于B/S,基于Java语言
+- 可以承载三高问题(高并发,高性能,高可用)
+
+maven 
+
+- 管理依赖
+- 约定大于配置
+
+![image-20210125093240106](/home/kalao/.config/Typora/typora-user-images/image-20210125093240106.png)
+
+![image-20210125094100024](/home/kalao/.config/Typora/typora-user-images/image-20210125094100024.png)
+
+![image-20210125094627244](/home/kalao/.config/Typora/typora-user-images/image-20210125094627244.png)
+
+![image-20210125094907956](/home/kalao/.config/Typora/typora-user-images/image-20210125094907956.png)
+
+全局配置
+
+![image-20210125100736122](/home/kalao/.config/Typora/typora-user-images/image-20210125100736122.png)
+
+
+
+## 1.6 Servlet
+
+## ![image-20210125102104908](/home/kalao/.config/Typora/typora-user-images/image-20210125102104908.png)
+
+![image-20210125110643665](/home/kalao/.config/Typora/typora-user-images/image-20210125110643665.png)
+
+
+
