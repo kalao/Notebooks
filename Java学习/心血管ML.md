@@ -14,7 +14,8 @@ https://tianchi.aliyun.com/notebook-ai/detail?spm=5176.12586969.1002.3.1cd866c2k
 Train_data.head().append(Train_data.tail())
 ```
 
-![image-20210126203234397](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126203234397.png)
+
+[![svBgV1.png](https://s3.ax1x.com/2021/01/27/svBgV1.png)](https://imgchr.com/i/svBgV1)
 
 ### 1.2 数据的类型和含义
 
@@ -86,14 +87,15 @@ missing.plot.bar()
 
 示例:
 
-![image-20210126231304149](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126231304149.png)
+[![svBUU0.png](https://s3.ax1x.com/2021/01/27/svBUU0.png)](https://imgchr.com/i/svBUU0)
 
 ```
 # 可视化看下缺省值
 msno.matrix(Train_data.sample(250))
 ```
 
-![image-20210126231357312](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126231357312.png)
+
+[![svB3vQ.png](https://s3.ax1x.com/2021/01/27/svB3vQ.png)](https://imgchr.com/i/svB3vQ)
 
 ### 2.2 异常判断
 
@@ -183,9 +185,7 @@ plt.title('Correlation of Numeric Features with Price',y=1,size=16)
 sns.heatmap(correlation,square = True,  vmax=0.8)
 ```
 
-![image-20210126220356570](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126220356570.png)
-
-
+[![svB6bR.png](https://s3.ax1x.com/2021/01/27/svB6bR.png)](https://imgchr.com/i/svB6bR)
 
 #### 3.1.2 数值特征分布
 
@@ -194,16 +194,15 @@ f = pd.melt(Train_data, value_vars=numeric_features)
 g = sns.FacetGrid(f, col="variable",  col_wrap=2, sharex=False, sharey=False)
 g = g.map(sns.distplot, "value")
 ```
-
-![image-20210126221919659](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126221919659.png)
+[![svByr9.png](https://s3.ax1x.com/2021/01/27/svByr9.png)](https://imgchr.com/i/svByr9)
 
 #### 3.1.3 数字特征相互之间的关系可视化
 
-![image-20210126222242034](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126222242034.png)
+[![svBsKJ.png](https://s3.ax1x.com/2021/01/27/svBsKJ.png)](https://imgchr.com/i/svBsKJ)
 
 
 
-![image-20210126222615186](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126222615186.png)
+[![svBB2F.png](https://s3.ax1x.com/2021/01/27/svBB2F.png)](https://imgchr.com/i/svBB2F)
 
 
 
@@ -233,8 +232,7 @@ f = pd.melt(Train_data, id_vars=['target'], value_vars=categorical_features)
 g = sns.FacetGrid(f, col="variable",  col_wrap=2, sharex=False, sharey=False, size=5)
 g = g.map(bar_plot, "value", "target")
 ```
-
-![image-20210126223004102](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126223004102.png)
+[![svB08U.png](https://s3.ax1x.com/2021/01/27/svB08U.png)](https://imgchr.com/i/svB08U)
 
 > 可以看类别特征对target的影响(以平均值),比如cp=1的时候,那么诊断为心脏病的概率是偏高的.再比如是否有运动性心绞痛(exang)这个为1的时候,诊断为心脏病的概率是很高的.
 
@@ -250,7 +248,7 @@ g = g.map(bar_plot, "value", "target")
 
 1. 使用箱线法
 
-![image-20210126225425299](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126225425299.png)
+[![svBwCT.png](https://s3.ax1x.com/2021/01/27/svBwCT.png)](https://imgchr.com/i/svBwCT)
 
 ```python
 #这里我包装了一个异常值处理的代码，可以随便调用。
@@ -327,7 +325,7 @@ max      564.0
 Name: chol, dtype: float64
 ```
 
-![image-20210126230049275](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126230049275.png)
+[![svBa5V.png](https://s3.ax1x.com/2021/01/27/svBa5V.png)](https://imgchr.com/i/svBa5V)
 
 > 这里删除了chol的超上界的异常值
 
@@ -350,8 +348,7 @@ Name: chol, dtype: float64
    
    
    
-   ![image-20210126231818450](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126231818450.png)
-
+  [![svBGuj.png](https://s3.ax1x.com/2021/01/27/svBGuj.png)](https://imgchr.com/i/svBGuj)
 
 
 ### 4.3  数据分桶
@@ -377,8 +374,7 @@ data[['power_bin', 'power']].head()
 
 - 标准化（转换为标准正态分布）；
 - 归一化（抓换到 [0,1] 区间）；
-- 针对幂律分布，可以采用公式： ![image-20210126232031807](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126232031807.png)
-
+- 针对幂律分布，可以采用公式： [![svBJDs.png](https://s3.ax1x.com/2021/01/27/svBJDs.png)](https://imgchr.com/i/svBJDs)
 1. 对age归一化
 
 ```python
@@ -389,9 +385,9 @@ data['age'] = ((data['age'] - np.min(data['age'])) / (np.max(data['age']) - np.m
 data['age'].plot.hist()
 ```
 
-![image-20210126232301897](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126232301897.png)
+[![svBYbn.png](https://s3.ax1x.com/2021/01/27/svBYbn.png)](https://imgchr.com/i/svBYbn)
 
-<img src="https://github.com/kalao/Images/blob/master/心血管ML.md/20210126232220204.png" alt="image-20210126232220204"  />
+[![svBNEq.png](https://s3.ax1x.com/2021/01/27/svBNEq.png)](https://imgchr.com/i/svBNEq)
 
 ### 4.5 类别特征OneEncoder
 
