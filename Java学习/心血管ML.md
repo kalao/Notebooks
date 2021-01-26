@@ -185,6 +185,8 @@ sns.heatmap(correlation,square = True,  vmax=0.8)
 
 ![image-20210126220356570](https://github.com/kalao/Images/blob/master/心血管ML.md/20210126220356570.png)
 
+
+
 #### 3.1.2 数值特征分布
 
 ```
